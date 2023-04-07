@@ -1,0 +1,521 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-width: 1026px;
+    height: 100vh;
+    min-height: 100%;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* a, li태그 전체에 공통 적용 */
+a{ text-decoration: none; color: black;}
+
+li{ list-style-type: none;}
+
+/* ------------topbanner------------- */
+
+.topBanner{
+    width: 100%;
+    margin: 0;
+    padding: 0 0 10px 0;
+    /* position: absolute; */
+    background-color: #F9F9F4;
+    font-size: 16px;
+    /* text-align: center; */
+}
+.topbox{
+    width: 80%;
+    position: relative;
+    /* text-align: center; */
+    margin: 0 auto;
+}
+.topcontent{
+    padding: 10px 0 0 0;
+    width: 80%;
+    color: #11BC0D;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    /* vertical-align: middle; */
+}
+.topbox>button{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #F9F9F4;
+    border: none;
+    cursor: pointer;
+}
+
+/* --------------header-------------- */
+
+.container2{
+    padding: 0;
+    padding-top: 50px;
+    width: 80%;
+    margin: 0 auto; 
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.container2 li a{
+    width: 70px;
+    color: black;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+/* ------------------------------------------ */
+
+.container3{
+    padding: 10px 0 30px 0;
+    width: 80%;
+    /* height: 90px; */
+    margin: 0 auto;
+    position: relative;
+}
+
+#logo{
+    width: 150px;
+    height: 60px;
+    /* position: absolute; */
+    /* top: 10px; */
+    /* left: 20px; */
+
+}
+
+.search1{
+    position: absolute;
+    left: 50%; 
+    /* top: 10%; */
+    transform: translateX(-50%); 
+    /* align-items: center;  */
+    display: inline-block;
+    border: 5px solid #F9F9F4;
+    padding: 1px;
+    border-radius: 100px;
+
+    background-color: #F9F9F4;
+}
+
+.search1 .search-txt{
+    width: 300px;
+    /* height: 30px; */
+    border: none;
+    background-color: #F9F9F4;
+}
+
+.search1 .search-txt:focus{
+    border: none;
+    outline: none;
+/* 마우스 호버링 했을때 윤곽선 없애기 */
+}
+
+.search1 .search-btn{
+    height: 35px;
+    border: none;
+    background-color: #F9F9F4;
+    cursor: pointer;
+    /* font-family: FontAwesome; */
+}
+
+#btn{
+    width: 16px;
+    height: 16px;
+    border: none;
+    color: #F9F9F4;
+    background-color: #F9F9F4;
+}
+
+/* ----------------------nav--------------------- */
+
+.menu{
+    margin: 0 0 20px 0;
+    background-color:#f9f9f4;
+}
+
+.container4{
+    padding: 0;
+    width: 80%;
+    /* height: 45px; */
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.container4 li{
+    margin: 0;
+    padding: 0;
+    /* 가로로 배열하면서 블록으로 하기 위해 */
+    display: inline-block;
+    width: 200px;
+
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    text-align: center;
+}
+
+.container4 li a{
+    padding: 0 0 0 20px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    display: block;
+    color: black;
+    text-align: left;
+}
+
+.fixedmenu{ /* 상단 메뉴 고정 -> jquery */  
+    width: 100%;
+    position: fixed;
+    top: 0px;
+}
+/* ------------------드롭다운메뉴-------------------- */
+
+.menu2{
+    width: 150px;
+    height: 407px;
+    border: 1px solid #909090;
+    background-color: white;
+    z-index: 98;
+    display: none;
+}
+
+.menu2 li{ width: 148px; }
+
+.container4>li:hover .menu2{
+    display: block;
+    position: absolute;
+}
+
+.container4>li:hover li:hover{
+    /* border-bottom: 0; */
+    background-color: #F9F9F4;
+    box-sizing: border-box;
+}
+
+.container4 li:hover .menu2>li ul{
+    display: none;
+}
+
+.container4 li:hover .menu2>li:hover ul{
+    border: 1px solid #909090;
+    border-left: none;
+    width: 150px;
+    display: block;
+    position: absolute;
+    left: 149px;
+    top: -1px;
+}
+.container4 li:hover .menu2>li:hover ul li{
+    width: 148px;
+}
+.menu3{
+    height: 407px;
+    border-left: none;
+    background-color: white;
+    z-index: 99;
+}
+
+/* --------------------banner---------------------- */
+.slideShow{
+    /* position: relative; */
+    width: 100%;
+    min-width: 1026px;
+    /* height: 0; */
+    /* padding-bottom: 56.26%; */
+    /* padding-top: 75%; */
+    /* overflow: hidden;  */
+}
+
+.slides{
+    padding: 0;
+    width: 100%;
+    /* width: 360px; */
+    /* height: 330px; */
+    min-width: 1026px;
+}
+
+/* .slides li{
+    width: 360px;
+    height: 330px;
+} */
+
+.banner-img {
+    width: 360px;
+    min-width: 150px;
+    height: auto;
+    margin: 5px;
+}
+
+.slides img{
+    /* 30차이가 나지 않으면 border-radius가 이상하게 설정됨 */
+    width: 100%;
+    /* margin: 5px; */
+    /* height: 330px; */
+    object-fit: fill;
+    border-radius: 30px;
+    overflow: hidden;
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; */
+}
+.banner-btn{
+    padding-top: 10px;
+    cursor: pointer;
+    color: #909090;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+/* .btnradius{
+    height: 25px;
+    border: 1px solid #909090;
+    border-radius: 50px;
+} */
+
+.material-symbols-outlined {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+/* -----------mini banner --------- */
+
+.minibanner1{
+    padding: 30px 0 30px 0;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.minibanner1 img{
+    width: 100%;
+    height: 200px;
+}
+
+
+/* ----------------main----------------- */
+.container5, .container6{
+    padding: 50px 0 100px 0;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: bold;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.minititle{
+    padding: 50px 0 20px 0;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 샘플 이미지!! */
+.container5 img, .container6 img{
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 240px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.thumbnail{
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: flex-start;
+    font-size: 15px;
+}
+
+.thumbnail>span{
+    padding-top: 20px;
+}
+.dis_Green{
+    color: #11BC0D;
+    font-weight: bold;
+}
+
+.recipe{
+    padding: 50px 0 50px 0;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.recipe img{
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+}
+
+.recipe2{
+    /* padding: 0 0 0 200px; */
+    font-size: 16pt;
+}
+
+.recipe2 span{
+    font-size: 17pt;
+    font-weight: bold;
+}
+
+.recipe2 a{
+    color: black;
+    font-size: 15pt;
+    cursor: pointer;
+}
+
+/* --------------aside--------------- */
+aside{
+    position: absolute;
+    top: 800px;
+    right: 20px;
+    bottom: -250%;
+}
+
+.container7{
+    position: sticky;
+    /* width: calc(80%+10px); */
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* left: 50%; */
+    /* left: calc(80% + 10px);
+    top: 0; */
+}
+#choikun1{
+    /* position: absolute; */
+    /* right: -600px; */
+    /* top: 280px; */
+    width: 80px;
+    height: 220px;
+    border-radius: 20px;
+    background-color: #F9F9F4;
+    font-size: 12px;
+}
+
+#choikun2{
+    margin: 0 0 20px 0;
+    padding: 15px 0 10px 0;
+    text-align: center;
+}
+
+#choikun1 img{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 70%;
+}
+
+#topbtn{
+    height: 30px;
+    width: 80px;
+    border: 1px solid #11BC0D;
+    border-radius: 20px;
+    background-color: #11BC0D;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* --------------footer------------------- */
+
+.yakgwan1{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+.yakgwan2{
+    width: 80%;
+    padding: 15px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    /* 수직정렬!!!! */
+    align-items: center;
+}
+
+.yakgwan2 li{
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    font-size: 14px;
+    font-weight: bold;
+    /* vertical-align: middle; */
+}
+
+.yakgwan2 li a{
+    padding: 30px;
+    /* height: 40px; */
+    color: black;
+}
+
+.yakgwan2 li #gaein{
+    color: #11BC0D;
+}
+/* --------------------------------- */
+.bottom1{
+    background-color:#f9f9f4;
+}
+
+.bottom2{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#com_address{
+    padding: 30px 10px 50px 20px;
+    font-size: 14px;
+}
+
+#custom_notice{
+    padding: 30px 20px 50px 10px;
+    font-size: 14px;
+}
+
+#custom_notice a{
+    color: black;
+}
+
+#jusik{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#gogaek{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#phnum{
+    color: #11BC0D;
+}
+
+.gray{
+    color: #909090;
+}

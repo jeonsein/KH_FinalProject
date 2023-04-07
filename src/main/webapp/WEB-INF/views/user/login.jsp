@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="/resources/css/Login_Main.css">
 
-    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/resources/ico/favicon.ico" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" /> -->

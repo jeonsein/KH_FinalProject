@@ -83,13 +83,13 @@ public class MemberMapperTests {
 void memberJoin() throws Exception {
 	MemberVO memberVO = new MemberVO();
 	
-	memberVO.setMEMBER_ID("TEST_SENGNA2");
-	memberVO.setMEMBER_PW("TEST_SENGNA2");
-	memberVO.setMEMBER_NAME("TEST_SENGNA2");
-	memberVO.setMEMBER_MAIL("TEST_SENGNA2");
+	memberVO.setMEMBER_ID("TEST_SENGNA3");
+	memberVO.setMEMBER_PW("TEST_SENGNA3");
+	memberVO.setMEMBER_NAME("TEST_SENGNA3");
+	memberVO.setMEMBER_MAIL("TEST_SENGN3");
 	memberVO.setMEMBER_HP("01055555555");
-	memberVO.setMEMBER_ADDR1("TEST_SENGNA2");
-	memberVO.setMEMBER_ADDR2("TEST_SENGNA2");
+	memberVO.setMEMBER_ADDR1("TEST_SENGNA3");
+	memberVO.setMEMBER_ADDR2("TEST_SENGNA3");
 	memberVO.setMEMBER_ZIPCODE(1234567);
 	
 	memberMapper.memberJoin(memberVO);

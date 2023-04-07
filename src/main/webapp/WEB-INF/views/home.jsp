@@ -2,18 +2,20 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Sengna</title>
+	<title>MYMG_HOME</title>
 	
 	<%@include file="/WEB-INF/views/common/favicon.jsp" %>
 </head>
+
 <body>
-<h1>
-	&#127808; Sengna World ^o^! &#127808;
-</h1>
+	<h1>
+		&#127808; MYMG World ^o^! &#127808;
+	</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<h2> This page represents the Team_MYMG's home.jsp! <br> And the time on the server is ${serverTime}. </h2>
 
-<h2>&#127774;</h2>
-<h3>&#127800;&#127808;&#127804;&#127802;&#128057;&#127803;&#127808;&#127800;&#127804;&#127800;&#127802;</h3>
+	<h1>&#127774;</h1>
+	<h1>&#127800;&#127808;&#127804;&#127802;&#128057;&#127803;&#127808;&#127800;&#127804;&#127800;&#127802;</h1>
 </body>
+
 </html>

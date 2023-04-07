@@ -1,0 +1,473 @@
+@charset "UTF-8";
+
+
+body{
+    margin: 0;
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{ text-decoration: none; }
+
+li{ list-style-type: none;}
+
+/* -----정렬------ */
+main{
+    padding: 100px;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+/* ---------aside------- */
+aside{
+    display: flex;
+    flex-flow: column wrap;
+    /* margin: 0 auto; */
+    position: relative;
+    left:-100px;
+    /* 왜 밑으로 안가지..? */
+    z-index: 97; 
+}
+aside>ul{
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    display: inline-block;
+    border: 1px solid black;
+    text-align: center;
+}
+aside>ul>li>a{
+    color: black;
+}
+aside>ul>li>a:hover{
+    text-decoration: underline;
+}
+.box1{
+    height: 160px;
+    border-bottom: none;
+    font-size: 11px;
+    background-color: #EFEFEF;
+}
+.box1>img{
+    padding-top: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+.small1{
+    padding: 1px;
+}
+.box2{
+    height: 210px;
+    font-size: 14px;
+}
+.small2{
+    padding: 25px;
+}
+.small3{
+    border-bottom: 1px solid black;
+}
+
+/* -----------테이블------------ */
+
+/* .huiwon{ */
+    /* width: 100px;
+    height: 500px; */
+    /* width: 500px; */
+    /* position: relative; */
+    /* right: 10px; */
+    /* left: 100px; */
+/* } */
+
+.sujeong1{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+#sujeong2{
+    padding: 10px;
+    margin:0;
+}
+.red{
+    color: red;
+}
+
+table{
+    width: 700px;
+    /* height: 800px; */
+    border-collapse: collapse;
+}
+tr{
+    border-bottom: 1px solid black;
+}
+.specialtr{
+    border-bottom: none;
+}
+th{
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    text-align: left;
+}
+.sletter{
+    font-size: 11px;
+    font-weight: lighter;
+}
+.addrtr{
+    width: 165px;
+    height: 18px;
+    border: 1px solid black;
+    background-color: #EFEFEF;
+}
+.btnset{
+    padding: 30px;
+    text-align: center;
+}
+.btntr{
+    width: 70px;
+    height: 20px;
+    padding: 1px;
+    border-radius: 5px;
+    border: 1px solid #909090;
+    background-color: #909090;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+.userbtn1{
+    margin: 5px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    background-color: #11BC0D;
+    border: 1px solid #11BC0D;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.userbtn2{
+    margin: 5px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+} 
+
+.radio{
+    font-size: 13px;
+}
+
+.th_height{
+    line-height: 65px;
+}
+
+
+
+/* ------header & footer -------*/
+
+body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: white;
+    /* 폰트바꾸기!!! */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* a, li태그 전체에 공통 적용 */
+a { 
+    text-decoration: none; 
+}
+
+li{
+    list-style-type: none;
+}
+
+/* --------------header-------------- */
+
+*{/* *이랑 body차이가 뭐지....... */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-width: 1026px;
+    height: 100vh;
+    min-height: 100%;
+    background-color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* a, li태그 전체에 공통 적용 */
+a{ text-decoration: none;}
+
+li{ list-style-type: none;}
+
+/* --------------header-------------- */
+
+.container2{
+    padding: 0;
+    padding-top: 50px;
+    width: 80%;
+    margin: 0 auto; 
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.container2 li a{
+    width: 70px;
+    color: black;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+/* ------------------------------------------ */
+
+.container3{
+    padding: 10px 0 30px 0;
+    width: 80%;
+    /* height: 90px; */
+    margin: 0 auto;
+    position: relative;
+}
+
+#logo{
+    width: 150px;
+    height: 60px;
+    /* position: absolute; */
+    /* top: 10px; */
+    /* left: 20px; */
+
+}
+
+.search1{
+    position: absolute;
+    left: 50%; 
+    /* top: 10%; */
+    transform: translateX(-50%); 
+    /* align-items: center;  */
+    display: inline-block;
+    border: 5px solid #F9F9F4;
+    padding: 1px;
+    border-radius: 100px;
+
+    background-color: #F9F9F4;
+}
+
+.search1 .search-txt{
+    width: 300px;
+    /* height: 30px; */
+    border: none;
+    background-color: #F9F9F4;
+}
+
+.search1 .search-txt:focus{
+    border: none;
+    outline: none;
+/* 마우스 호버링 했을때 윤곽선 없애기 */
+}
+
+.search1 .search-btn{
+    height: 35px;
+    border: none;
+    background-color: #F9F9F4;
+    cursor: pointer;
+    /* font-family: FontAwesome; */
+}
+
+#btn{
+    width: 16px;
+    height: 16px;
+    border: none;
+    color: #F9F9F4;
+    background-color: #F9F9F4;
+}
+
+/* ----------------------nav--------------------- */
+
+.menu{
+    margin: 0 0 20px 0;
+    background-color:#f9f9f4;
+}
+
+.container4{
+    padding: 0;
+    width: 80%;
+    /* height: 45px; */
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.container4 li{
+    margin: 0;
+    padding: 0;
+    /* 가로로 배열하면서 블록으로 하기 위해 */
+    display: inline-block;
+    width: 200px;
+
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    text-align: center;
+}
+
+.container4 li a{
+    padding: 0 0 0 20px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    display: block;
+    color: black;
+    text-align: left;
+}
+
+.fixedmenu{ /* 상단 메뉴 고정 -> jquery */  
+    width: 100%;
+    position: fixed;
+    top: 0px;
+}
+/* ------------------드롭다운메뉴-------------------- */
+
+.menu2{
+    width: 150px;
+    height: 407px;
+    border: 1px solid #909090;
+    background-color: white;
+    z-index: 98;
+    display: none;
+}
+
+.menu2 li{ width: 148px; }
+
+.container4>li:hover .menu2{
+    display: block;
+    position: absolute;
+}
+
+.container4>li:hover li:hover{
+    /* border-bottom: 0; */
+    background-color: #F9F9F4;
+    box-sizing: border-box;
+}
+
+.container4 li:hover .menu2>li ul{
+    display: none;
+}
+
+.container4 li:hover .menu2>li:hover ul{
+    border: 1px solid #909090;
+    border-left: none;
+    width: 150px;
+    display: block;
+    position: absolute;
+    left: 149px;
+    top: -1px;
+}
+.container4 li:hover .menu2>li:hover ul li{
+    width: 148px;
+}
+.menu3{
+    height: 407px;
+    border-left: none;
+    background-color: white;
+    z-index: 99;
+}
+/* --------------footer------------------- */
+
+.yakgwan1{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+.yakgwan2{
+    width: 80%;
+    padding: 15px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    /* 수직정렬!!!! */
+    align-items: center;
+}
+
+.yakgwan2 li{
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    font-size: 14px;
+    font-weight: bold;
+    /* vertical-align: middle; */
+}
+
+.yakgwan2 li a{
+    padding: 30px;
+    /* height: 40px; */
+    color: black;
+}
+
+.yakgwan2 li #gaein{
+    color: #11BC0D;
+}
+/* --------------------------------- */
+.bottom1{
+    background-color:#f9f9f4;
+}
+
+.bottom2{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#com_address{
+    padding: 30px 10px 50px 20px;
+    font-size: 14px;
+}
+
+#custom_notice{
+    padding: 30px 20px 50px 10px;
+    font-size: 14px;
+}
+
+#custom_notice a{
+    color: black;
+}
+
+#jusik{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#gogaek{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#phnum{
+    color: #11BC0D;
+}
+
+.gray{
+    color: #909090;
+}

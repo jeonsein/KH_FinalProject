@@ -1,0 +1,467 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+/* p태그의 margin 고치면 전부 함께 욺직임 */
+
+/* ========================== 헤더 ========================*/
+
+/* *{
+    *이랑 body차이가 뭐지.............
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: white;
+    /* 폰트바꾸기!!! */
+    font-family:"Spoqa Han Sans Neo", sans-serif;
+}
+
+/* a, li태그 전체에 공통 적용 */
+a { 
+    text-decoration: none; 
+}
+
+li{
+    list-style-type: none;
+}
+
+/* --------------header-------------- */
+
+.container2{
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+
+    width: 99%;
+    height: 30px;
+
+    /* 수평 기준 한 가운데 */
+    margin: 0 auto; 
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+}
+
+.container2 li a{
+    width: 70px;
+    color: black;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+/* ------------------------------------------ */
+
+.container3{
+    padding: 0 0 20px 0;
+    width: 80%;
+    height: 90px;
+    /* 수평 기준 한 가운데 */
+    margin: 0 auto;
+    position: relative;
+}
+
+#logo{
+    width: 150px;
+    height: 60px;
+    /* position: absolute; */
+    top: 10px;
+    left: 20px;
+
+}
+
+.search1{
+    position: absolute;
+    left: 50%; 
+    top: 10%;
+    transform: translateX(-50%); 
+    align-items: center; 
+    display: inline-block;
+    border: 5px solid #F9F9F4;
+    margin: 10px;
+    border-radius: 100px;
+
+    background-color: #F9F9F4;
+}
+
+.search1 input[type="text"]{
+    width: 300px;
+    height: 30px;
+    border: none;
+    background-color: #F9F9F4;
+}
+
+.search1 input[type="text"]:focus{
+    border: none;
+    outline: none;
+/* 마우스 호버링 했을때 윤곽선 없애기 */
+}
+
+button.btn{
+    height: 35px;
+    border: none;
+    /* color: #F9F9F4; */
+    /* background: #F9F9F4; */
+    background-color: #F9F9F4;
+    /* font-family: FontAwesome; */
+}
+
+#btn{
+    width: 16px;
+    height: 16px;
+    border: none;
+    color: #F9F9F4;
+    background-color: #F9F9F4;
+}
+
+/* .search1.img-button{
+    background: url(/imgs/search.png);
+    background-repeat: no-repeat;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+} */
+
+/* 
+i.fab.fa-sistrix{
+    font-size: 1rem;
+} */
+
+/* ----------------------nav--------------------- */
+
+#menu{
+    background-color:#f9f9f4;
+}
+
+.container4{
+    padding: 0;
+    width: 80%;
+    height: 45px;
+
+    /* 수평 기준 한 가운데 */
+    margin: 0 auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.container4 li{
+    /* 가로로 배열하면서 블록으로 하기 위해 */
+    display: inline-block;
+    width: 200px;
+
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    text-align: center;
+}
+
+.container4 li a{
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    color: black;
+}
+
+/* --------------------banner---------------------- */
+
+/* 제이쿼리 카드 이벤트... */
+#banner{
+    padding-top: 5px;
+    width: 100%;
+    height: 300px;
+}
+
+/* ----------------main----------------- */
+.container5{
+    padding: 50px 0 50px 0;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: center;
+}
+.container6{
+    padding: 50px 0 80px 0;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#minititle{
+    padding: 50px 0 20px 0;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 샘플 이미지!! */
+.container5 img{
+    display: inline-block;
+    padding: 20px;
+    width: 170px;
+    height: 200px;
+}
+
+.thumbnail{
+    display: flex;
+    flex-flow:column nowrap;
+    align-items: flex-start;
+    font-size: 12px;
+}
+
+.container6 img{
+    padding: 20px;
+    width: 170px;
+    height: 200px;
+}
+/* =========================================================*/
+
+/* =========================== Main ========================*/
+main {
+    flex-grow: 1;
+}
+.out_wapper{        /* 바깥쪽 wapper 보고싶으면 solide로 변경 */
+    /* position: relative; */
+    width: 1000px;
+    /* height: 800px; */
+    /* height: 100%; */
+    padding: 20px 30px;
+    margin: 0 auto;
+    /* margin-left: 200px; */
+    border: hidden;
+}
+.basket{            /*  */
+    /* position: relative; */
+    border: hidden;
+    padding: 20px 30px;
+    margin: 0 auto;
+}
+a{                  /* a 태그 밑줄 없음 & 색상 검은색 */
+    text-decoration: none;
+    color: black;
+    
+}
+a:hover{            /* a 태그에 마우스 호버링 하면 파란색&밑줄생김 */
+    color: blue;
+    text-decoration-line: none;
+}
+.basket>p{          /* 장바구니 */
+    margin-left: 140px;
+    font-size: 30px;
+}
+.StandardDelivery{  /* 일반배송 */
+    margin-left: 145px;
+    font-size: 20px;
+}
+.checkboxAll{       /* 체크박스ALL */
+    margin-left: 145px;
+}
+.Delete{            /* 선택삭제 */
+    margin-left: 520px;
+    cursor: pointer;
+}
+hr{                 /* 체크박스 hr 태그 */
+    width: 700px;
+    margin-left: 140px;
+    /* margin-top: -3px; */
+    
+    /* position: absolute; */
+}
+.up_hr{             /* up_hr 태그 위치  */
+    margin-top: -13px;
+}
+.down_hr{           /* down_hr 태그 위치  */
+    margin-top: 10px;
+}
+.checkbox{        /* 개별 체크박스 */
+    
+    margin-left: 145px;
+    margin-top: 50px;
+}
+.product{           /* 각 상품 */
+    display: inline-block;
+}
+.product_img{      /* 개별상품 이미지 */
+    margin-left: 180px;
+    margin-top: -55px;
+}
+.prodcut_name{      /* 개별상품 이름 */
+    margin-left: 150px;
+    margin-top: 100px;
+}
+.num>div{           /* num내부 div태그 */
+    margin: 0 10px;
+}
+.button_all{            /* 버튼 전체 */
+    display: flex;
+}
+.button_plus{           /* (+) 버튼 */
+    margin-left: 450px;
+    margin-top: -70px;
+    width: 20px;
+    height: 20px;
+}
+.button_minus{          /* (-) 버튼 */
+    margin-top: -70px;
+    width: 20px;
+    height: 20px;
+}
+.button_all>div{        /* 버튼 사이 숫자 */
+    margin-top: -82px;
+    padding: 10px;
+}
+.button_plus:hover{      /* 버튼에 마우스 올렸을때 */
+    cursor: pointer;
+}
+.button_minus:hover{      /* 버튼에 마우스 올렸을때 */
+    cursor: pointer;
+}
+.DisCountAndPrice{        /* 할인윤 & 금액 */
+    display: flex;   
+}
+.DisCount{          /* 할인율 */
+    margin-left: 580px;
+    margin-top: -70px;
+}
+.price{             /* 가격 */
+    margin-left: 50px;
+    margin-top: -70px;
+}
+.Delete_1{              /* X버튼 위치 */
+    margin-left: 60px;
+    margin-top: -70px;
+}
+.final_price{           /* 최종 금액 묶음 div */
+    margin-left: 220px;
+    font-size: 15px;
+}
+.price_1{               /* 상품금액 & 할인금액 & 배송비 */
+    font-size: 22px;
+}
+.price_2{               /* 주문금액 */
+    font-size: 22px;
+    color: red;
+}
+.order{                 /* 선택상품 주문하기 */
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 310px;
+    width: 150px;
+    height: 40px;
+}
+.continue{              /* 계속 쇼핑하기 버튼 */
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 100px;
+    width: 150px;
+    height: 40px;
+}
+
+/* ====================== Footer =========================== */
+
+.yakgwan{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+
+    width: 100%;
+    height: 40px;
+    margin: 20px auto;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    /* 수직정렬!!!! */
+    align-items: center;
+}
+
+.yakgwan li{
+    /* 가로로 중간 (세로로 중간까지 해야 글자가 정 가운데 올 듯) */
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.yakgwan li a{
+    padding: 30px;
+    height: 40px;
+    color: black;
+}
+
+.yakgwan li #gaein{
+    color: #11BC0D;
+}
+/* --------------------------------- */
+.bottom{
+    background-color:#f9f9f4;
+}
+
+.bottom{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#com_address{
+    padding: 15px;
+    /* display: inline-block; */
+    font-size: 14px;
+}
+
+#custom_notice{
+    padding: 15px;
+    /* display: inline-block; */
+    /* float: right; */
+    font-size: 14px;
+}
+
+#custom_notice a{
+    color: black;
+}
+
+#jusik{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#gogaek{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+#phnum{
+    color: #11BC0D;
+}
+
+.gray{
+    color: #909090;
+}

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
+   xmlns="http://maven.apache.org/POM/4.0.0" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.zerock</groupId>
-	<artifactId>springinterceptor</artifactId>
+	<artifactId>MYMG</artifactId>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
 	<packaging>war</packaging>
 
-	<name>springinterceptor</name>
+	<name>MYMG</name>
 
 
 	<properties>
@@ -24,25 +24,37 @@
 		<org.apache.logging.log4j-version>2.20.0</org.apache.logging.log4j-version>
 	</properties>
 
-	<dependencies>
 
-      <!-- =============== Logging =============== -->
+   <!-- =============== API =============== -->
 
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${org.apache.logging.log4j-version}</version>
-        </dependency>
+   <!-- 결제API -->
+   <repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
-        <!-- For Spring framework, HikariCP, DriverSpy logging -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${org.apache.logging.log4j-version}</version>
-        </dependency>
+<!-- ********************************************************************** -->
 
+   <dependencies>
 
-      <!-- ============= Servlet/JSP ============= -->
+   <!-- =============== Logging =============== -->
+
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-core</artifactId>
+         <version>${org.apache.logging.log4j-version}</version>
+      </dependency>
+
+   <!-- For Spring framework, HikariCP, DriverSpy logging -->
+      <dependency>
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
+         <version>${org.apache.logging.log4j-version}</version>
+      </dependency>
+
+   <!-- ============= Servlet/JSP ============= -->
    
       <dependency>
          <groupId>javax.servlet</groupId>
@@ -65,8 +77,8 @@
       </dependency>
 
 
-      <!-- =============== AspectJ =============== -->
-            
+   <!-- =============== AspectJ =============== -->
+
       <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -80,7 +92,7 @@
       </dependency>
 
 
-      <!-- ================ Spring =============== -->
+   <!-- ================ Spring =============== -->
 
       <dependency>
          <groupId>org.springframework</groupId>
@@ -114,14 +126,14 @@
          <version>${org.springframework-version}</version>
       </dependency>
 
-      <!-- =============== JDBC =============== -->
+   <!-- =============== JDBC =============== -->
 
-        <dependency>
+      <dependency>
          <groupId>org.bgee.log4jdbc-log4j2</groupId>
          <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
          <version>1.16</version>
       </dependency>
-        
+
       <dependency>
          <groupId>com.oracle.database.jdbc</groupId>
          <artifactId>ojdbc8-production</artifactId>
@@ -162,7 +174,7 @@
          </exclusions>
       </dependency>
 
-      <!-- =============== DataSource =============== -->
+   <!-- =============== DataSource =============== -->
 
       <dependency>
          <groupId>com.zaxxer</groupId>
@@ -177,7 +189,7 @@
          </exclusions>
       </dependency>
 
-      <!-- =============== Testing =============== -->
+   <!-- =============== Testing =============== -->
    
       <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -186,22 +198,7 @@
             <scope>test</scope>
       </dependency>
 
-   
-      <!-- ================ Misc ================= -->
-
-      <dependency>
-         <groupId>javax.inject</groupId>
-         <artifactId>javax.inject</artifactId>
-         <version>1</version>
-      </dependency>
-   
-      <dependency>
-         <groupId>org.projectlombok</groupId>
-         <artifactId>lombok</artifactId>
-         <version>1.18.26</version>
-      </dependency>
-
-      <!-- ================ mybatis ================= -->
+   <!-- ================ Mybatis ================= -->
 
       <dependency>
          <groupId>org.mybatis</groupId>
@@ -215,43 +212,80 @@
          <version>3.0.1</version>
       </dependency>
 
+   <!-- ================ Misc ================= -->
+
+      <dependency>
+         <groupId>javax.inject</groupId>
+         <artifactId>javax.inject</artifactId>
+         <version>1</version>
+      </dependency>
+   
+      <dependency>
+         <groupId>org.projectlombok</groupId>
+         <artifactId>lombok</artifactId>
+         <version>1.18.26</version>
+      </dependency>
+
+      <dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+   <!-- ================= converting ================= -->
+   
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.0-rc1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.14.2</version>
+		</dependency>
+
 
    </dependencies>
-    
+
+<!-- ********************************************************************** -->
+
 	<build>
 
       <finalName>/</finalName>
 
-        <plugins>
+         <plugins>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-war-plugin</artifactId>
+               <version>3.3.2</version>
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.10</version>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-eclipse-plugin</artifactId>
+               <version>2.10</version>
 
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>false</downloadJavadocs>
-                </configuration>
+               <configuration>
+                  <downloadSources>true</downloadSources>
+                  <downloadJavadocs>false</downloadJavadocs>
+               </configuration>
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>3.11.0</version>
 
             <configuration>
                <release>${java-version}</release>
             </configuration>
             </plugin>
 
-        </plugins>
+      </plugins>
 
-    </build>
+   </build>
+
 </project>

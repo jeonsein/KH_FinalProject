@@ -10,8 +10,10 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @NoArgsConstructor
 
+//@ControllerAdvice("error") // base uri 를 적어둬도 먹히지 않는다 
+//-> 예외처리용 컨트롤러는 웹브라우저로 부터 요청을 받아 수행하는 것이 아니기 때문!!
 @ControllerAdvice
-public class CommonExceptionHandler {
+public class CommonExceptionHandler {	// pojo
 
 	
 	@ExceptionHandler(Exception.class)
