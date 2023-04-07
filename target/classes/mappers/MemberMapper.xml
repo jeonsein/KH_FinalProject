@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.myapp.mapper.MemberMapper">
+
+	<!-- 성별, 회원가입날짜, 생년월일 insert문 돌아가게 설정해줘야함!! -->
+    <!-- memberJoin -->
+    <insert id="memberJoin" parameterType="org.zerock.myapp.domain.MemberVO">
+        INSERT INTO MEMBER_TEST
+        VALUES(#{MEMBER_ID}, #{MEMBER_PW}, #{MEMBER_NAME}, #{MEMBER_MAIL}, #{MEMBER_HP}, #{MEMBER_ADDR1}, #{MEMBER_ADDR2}, #{MEMBER_ZIPCODE}, 0)
+    </insert>
+
+    
+ 
+     <!-- 로그인 -->
+     <select id="memberLogin" resultType="org.zerock.myapp.domain.UserVO">
+         SELECT MEMBER_ID, MEMBER_NAME, ADMINCK FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID} and MEMBER_PW = #{MEMBER_PW}
+     </select>
+     
+     <!-- 
+     <select id="selectUser" resultType="org.zerock.myapp.domain.UserVO">
+		SELECT * 
+		FROM tbl_user 
+		WHERE 
+			userid = #{userid} 
+			AND userpw = #{userpw}
+	</select>
+	-->
+
+</mapper>
