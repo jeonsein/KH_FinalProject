@@ -16,6 +16,8 @@ public class Criteria {
    // 페이징처리를 위한 공통 전송파라미터인데.. 이를 고정시킬지, 받을지는 구현에 다라 다름
    private Integer pagesPerPage = 10; // 한 Pagination(페이지번호목록)의 크기 -> 몇개의 페이지 번호를 보여줄까?
    
+   private String order;
+   
    // 검색조건이 기준정보로 역시 추가
    private String type;
    private String keyword;
@@ -30,6 +32,9 @@ public class Criteria {
       builder.queryParam("currPage", this.currPage); // 기준정보 추가
       builder.queryParam("amount", this.amount);
       builder.queryParam("pagesPerPage", this.pagesPerPage);
+      if(order != null) {
+			builder.queryParam("order", this.order);
+	  } // if
 //      builder.queryParam("type", this.type);
 //      builder.queryParam("keyword", this.keyword); 
 

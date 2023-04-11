@@ -66,7 +66,7 @@ public class CartMapperTest {
 		log.trace("testaddCart() invoked");
 		
 		String member_id = "codud"; // 회원 아이디
-		Integer product_no = 1; // 상품번호
+		Integer product_no = 2; // 상품번호
 		Integer count = 1;  // 개수
 		
 		CartDTO cart = new CartDTO();
@@ -99,7 +99,7 @@ public class CartMapperTest {
 	void testdeleteCart() { //
 		log.trace("testdeleteCart() invoked");
 		
-		Integer no = 2;
+		Integer no = 25;
 		
 		int affectedLines = this.mapper.deleteCart(no);
 		

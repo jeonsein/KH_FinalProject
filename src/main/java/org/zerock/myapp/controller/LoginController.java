@@ -83,4 +83,6 @@ public class LoginController {			// POJO
 		log.trace("dummyLogout() invoked.");
 	} // dummyLogout()
 	
+	// 부계정으로 되는지 연습!
+	
 } // end class

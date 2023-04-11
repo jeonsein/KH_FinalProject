@@ -53,6 +53,7 @@
                     <li><a href="/login">로그인</a></li>
                     <li><a href="/signup/main">회원가입</a></li>
                     <li><a href="/cart">장바구니</a></li>
+                    <!-- <li><a href="/cart/${member.member_id}">장바구니</a></li> -->
                 </c:if> 
                 
                 <!--로그인 O -->
@@ -63,12 +64,16 @@
                             <li><a href="/admin/main">관리자 페이지</a></li>
                         </c:if> 
                         
-               		<li>${member.NAME}님 환영합니다.</li>
+               		<li>${member.name}님 환영합니다.</li>
                     <!-- <li><a href="/logout">로그아웃</a></li> -->
                     <!-- => 비동기 방식 로그아웃으로 변경 -->
                     <li><a id="logout_button">로그아웃</a></li>
                     <li><a href="/mypage">마이페이지</a></li>
                     <li><a href="/cart">장바구니</a></li>
+                    
+                    <!-- 로그인이 되야 아래가 적용될듯? -->
+                    <!-- <li><a href="/cart/${member.member_id}">장바구니</a></li> -->
+                    
                 </c:if>       
             </ul>
 

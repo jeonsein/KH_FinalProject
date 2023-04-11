@@ -1,4 +1,4 @@
-package org.zerock.myapp.persistence;
+package org.zerock.myapp.service;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;

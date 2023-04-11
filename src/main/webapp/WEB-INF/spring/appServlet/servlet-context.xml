@@ -59,6 +59,7 @@
 	
 	<!--  메인 -->
 	<view-controller path="/main" 	view-name="/main" 	status-code="200" />
+	
 	<beans:bean
       id="multipartResolver"
       class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

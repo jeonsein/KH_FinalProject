@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.zerock.myapp.mapper.ProductMapper">
+    <select id="SelectOrder" resultType="org.zerock.myapp.domain.ProductVO">
+        SELECT pno, pname, content, image, price, discount, 
+        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
+        (price * (discount /100)), 10) as disprice 
+        FROM product_list
+        ORDER BY #{order} asc
+        OFFSET ( #{currPage} -1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY
+    </select>
+
+    <select id="SelectDetail" resultType="org.zerock.myapp.domain.ProductDTO">
+        SELECT pno, pname, content, image, price, discount, 
+        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
+        (price * (discount /100)), 10) as disprice, subimage1, subimage2, subimage3, subimage4
+        FROM product_list
+        WHERE pno = #{pno}
+    </select>
+</mapper>

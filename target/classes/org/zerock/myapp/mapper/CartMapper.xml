@@ -32,8 +32,8 @@
 	
 	<!-- resultType는 select에서만! 쿼리가 실행되면 resultset이 리턴되며 resultset에 저장된 검색결과를 어떤 자바 객체에 매핑할지 지정할 때 사용 -->
 	<!-- 카트 목록 -->
-	<!-- <select id="getCart" resultType="org.zerock.myapp.domain.CartDTO"> -->
-	<select id="getCart" resultType="org.zerock.myapp.domain.CartVO">
+	<select id="getCart" resultType="org.zerock.myapp.domain.CartDTO">
+	<!-- <select id="getCart" resultType="org.zerock.myapp.domain.CartVO"> -->
 	
 		SELECT a.no, a.member_id, a.product_no, a.count, b.name, b.price, b.discount_price
 		FROM cart a left outer join product b on a.product_no = b.no
