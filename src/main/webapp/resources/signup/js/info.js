@@ -420,17 +420,19 @@ function openKakaoPostcode() {
 
 
 
+
+
 // 아이디 중복 확인
 
 function checkId(){
-    var id = $("#input_id").val();    // 아이디 입력값
+    var memberId = $("#input_id").val();    // 아이디 입력값
 	
     $.ajax({
         url:"/signup/infoa",
         type:"post",
-        data:{id : id},
-        success:function(cnt){
-            if(cnt == 0) {          // 0이면 사용가능 
+        data:{id : memberId},
+        success:function(cntId){
+            if(cntId == 0) {          // 0이면 사용가능 
                 popup_on2();
             } else {                // 1이면 중복
                 popup_on3();
@@ -452,8 +454,8 @@ function checkEmail() {
         url:"/signup/infob",
         type: "post",
         data:{email : email},
-        success:function(cnt){
-            if(cnt == 0){                   // 0이면 사용 가능
+        success:function(cntEmail){
+            if(cntEmail == 0){                   // 0이면 사용 가능
                 popup_on4();
             } else {                          // 1이면 이메일 중복
                 popup_on5();    
@@ -474,8 +476,8 @@ function checkHp(){
         url:"/signup/infoc",
         type: "post",
         data:{tel : tel},
-        success: function(cnt){
-            if(cnt == 0){            // 0이면 사용 가능, 인증번호 전송
+        success: function(cntTel){
+            if(cntTel == 0){            // 0이면 사용 가능, 인증번호 전송
                 popup_on6();
             } else {                  // 1이면 중복
                 popup_on7();

@@ -27,11 +27,11 @@ public class EmailCheckController {
 	public int emailCheck(@RequestParam("email") String email) {
 		log.trace("emailCheck ({}) invoked 이메일 중복확인", email);
 		
-		int cnt = emailCheckService.emailCheck(email);	
+		int cntEmail = emailCheckService.emailCheck(email);	
 		
-		log.trace("cnt : {} 이메일 중복확인 성공", cnt);
+		log.trace("cnt : {} 이메일 중복확인 성공", cntEmail);
 		
-		return cnt;
+		return cntEmail;
 	} // emailCheck
 	
 } // end class

@@ -22,11 +22,11 @@ public class EmailCheckServiceImpl implements EmailCheckService {
 	public int emailCheck(String email) {
 		log.trace("emailCheck () invoked. 이메일 중복 확인 ");
 		
-		int cnt = emailCheckMapper.emailCheck(email);
+		int cntEmail = emailCheckMapper.emailCheck(email);
 		
 		log.trace("emailCheck () invoked. 이메일 중복 ㅇㅇㅇ ");
 		
-		return cnt;
+		return cntEmail;
 		
 	} // emailCheck
 

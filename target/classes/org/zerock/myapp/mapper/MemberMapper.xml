@@ -25,7 +25,7 @@
 	<!-- 혁규 회원가입 -->
 	<insert id="memberSignup" >
 	  INSERT INTO member (
-	  	ID, PASSWORD, NAME, EMAIL, TEL, ADDRESS1, ADDRESS2, ADDRESS3, GENDER, SINGUP_DATE, BIRTH_DATE, ADMINCK)
+	  	ID, PASSWORD, NAME, EMAIL, TEL, ADDRESS1, ADDRESS2, ADDRESS3, GENDER, SIGNUP_DATE, BIRTH_DATE, ADMINCK)
 	  VALUES (
 	  	#{id}, #{password}, #{name}, #{email}, #{tel}, #{address1}, #{address2}, #{address3},
 	  	#{gender,jdbcType=VARCHAR}, #{signup_date,jdbcType=TIMESTAMP}, #{birth_date,jdbcType=VARCHAR}, #{adminCk}

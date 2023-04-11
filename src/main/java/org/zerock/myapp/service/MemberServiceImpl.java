@@ -15,16 +15,7 @@ import lombok.extern.log4j.Log4j2;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-//	@Setter(onMethod_=@Autowired)
-//	MemberMapper memberMapper;
-//
-//	// 회원가입
-//	@Override
-//	public void memberJoin(MemberVO memberVO) throws Exception {
-//		
-//		memberMapper.memberJoin(memberVO);
-//		
-//	}
+
 	// 혁규 회원가입
 		@Setter(onMethod_=@Autowired)
 		MemberMapper mapper;

@@ -9,7 +9,7 @@
 
 	<!-- 아이디 중복 체크 -->
 	<select id="idCheck" parameterType="String" resultType="int">
-		SELECT COUNT(ID) FROM member WHERE ID= #{id}
+		SELECT COUNT(ID) FROM member WHERE id= #{id}
 	</select>
 	
 </mapper>
