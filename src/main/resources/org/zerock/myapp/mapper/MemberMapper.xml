@@ -20,6 +20,15 @@
          SELECT MEMBER_ID, MEMBER_NAME, ADMINCK FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID} and MEMBER_PW = #{MEMBER_PW}
      </select>
      
+     
+     <!-- 주문자 정보(찬돌) 컬럼명 변경되어야 할 부분 -->
+     <select id="getMemberInfo" resultType="org.zerock.myapp.domain.MemberVo">
+     	SELECT memberId, memberName, memberMail, MemberAddr1, MamberAddr2, MemberAddr3
+     	FORM Member
+     	WHERE MemberId = #{MemberId}
+     </select>
+     
+     
      <!-- 
      <select id="selectUser" resultType="org.zerock.myapp.domain.UserVO">
 		SELECT * 

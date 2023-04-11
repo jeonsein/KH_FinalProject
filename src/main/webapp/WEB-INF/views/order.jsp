@@ -229,7 +229,14 @@
 						<c:forEach items="${orderList}" var="ol">
 							<tr>
 								<td>
-									<!-- 이미지 <td>-->
+								<!-- 수정필요 -->
+									<div class="image_wrap" 
+										data-productid="${ol.imageList[0].productId}" 
+										data-path="${ol.imageList[0].uploadPath}" 
+										data-uuid="${ol.imageList[0].uuid}" 
+										data-filename="${ol.imageList[0].fileName}">
+										<img>
+									</div>
 								</td>
 								<td class="상품정보">${ol.productName}</td>
 								<td class="products_table_price_td">
