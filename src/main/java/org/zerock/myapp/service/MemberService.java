@@ -14,4 +14,7 @@ public interface MemberService {
 	// 회원가입 혁규
 	public void memberSignup(MemberVO memberVO) throws Exception;
 	
+	// 주문자 정보 (찬돌)
+	public MemberVO getMemberInfo(String memberId);
+	
 } // end class

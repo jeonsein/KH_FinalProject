@@ -46,6 +46,13 @@ public class MemberServiceImpl implements MemberService {
 	
 	} // memberLogin()
 	
+	// getMemberInfo() Mapper 메서드를 호출하고 반환받은 MemberVO 객체를 반환해주는 코드를 작성 (찬돌)
+	@Override
+	public MemberVO getMemberInfo(String memberId) {
+		
+		return mapper.getMemberInfo(memberId);
+	} // getMemberInfo
+	
 	
 	
 	

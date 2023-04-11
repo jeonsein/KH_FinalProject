@@ -37,6 +37,12 @@
   )
 </insert>
 	
+	     <!-- 주문자 정보(찬돌) 컬럼명 변경되어야 할 부분 -->
+     <select id="getMemberInfo" resultType="org.zerock.myapp.domain.MemberVo">
+     	SELECT memberId, memberName, memberMail, MemberAddr1, MamberAddr2, MemberAddr3
+     	FORM Member
+     	WHERE MemberId = #{MemberId}
+     </select>
 	
 
 </mapper>

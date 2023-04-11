@@ -10,8 +10,10 @@ public interface MemberMapper {
 	// 로그인
 	public MemberVO memberLogin(MemberVO memberVO);
 	
-	
 	// 회원 가입  혁규
 	public void memberSignup(MemberVO memberVO);
+	
+	// 주문자 주소 정보 (찬돌)
+	public MemberVO getMemberInfo(String memberId);
 	
 } // end class
