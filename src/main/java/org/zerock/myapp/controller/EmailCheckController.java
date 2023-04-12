@@ -22,9 +22,9 @@ public class EmailCheckController {
 	@Setter(onMethod_={@Autowired})
 	private EmailCheckService emailCheckService;
 	
+	
 	@PostMapping("/infob")
-	@ResponseBody
-	public int emailCheck(@RequestParam("email") String email) {
+	public @ResponseBody int emailCheck(@RequestParam("email") String email) {
 		log.trace("emailCheck ({}) invoked 이메일 중복확인", email);
 		
 		int cntEmail = emailCheckService.emailCheck(email);	

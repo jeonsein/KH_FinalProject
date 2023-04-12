@@ -23,9 +23,9 @@ public class IdCheckController {
 	@Autowired
 	private IdCheckService idCheckService;
 	
+	
 	@PostMapping("/infoa")
-	@ResponseBody
-	public int idCheck(@RequestParam("id") String id) {
+	public @ResponseBody int idCheck(@RequestParam("id") String id) {
 		log.trace("idCheck {} invoked. (중복확인)",id);
 		
 		int cntId= idCheckService.idCheck(id);

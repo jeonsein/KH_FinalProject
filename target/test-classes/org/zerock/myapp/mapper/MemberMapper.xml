@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.myapp.mapper.MemberMapper">
+
+
+     <!-- 로그인: memberLogin 
+     <select id="memberLogin" resultType="org.zerock.myapp.domain.UserVO">
+         SELECT MEMBER_ID, MEMBER_NAME, ADMINCK FROM MEMBER_TEST WHERE MEMBER_ID = #{MEMBER_ID} and MEMBER_PW = #{MEMBER_PW}
+     </select>-->
+     
+	     <!-- 
+	     <select id="selectUser" resultType="org.zerock.myapp.domain.UserVO">
+			SELECT * 
+			FROM tbl_user 
+			WHERE 
+				userid = #{userid} 
+				AND userpw = #{userpw}
+		</select>
+		-->
+	
+	<!-- 혁규 회원가입 -->
+	<insert id="memberSignupTest" >
+	  INSERT INTO member (
+	  	ID, PASSWORD, NAME, EMAIL, TEL, ADDRESS1, ADDRESS2, ADDRESS3, GENDER, BIRTH_DATE, ADMINCK)
+	  VALUES (
+	  	#{id}, #{password}, #{name}, #{email}, #{tel}, #{address1}, #{address2}, #{address3},
+	  	#{gender,jdbcType=VARCHAR}, #{birth_date,jdbcType=VARCHAR}, #{adminCk}
+	  )
+	</insert>
+	
+	
+
+</mapper>

@@ -374,12 +374,12 @@ function popup_blur12(chk) {
 
 // 회원가입 기능
 
-$(document).ready(function(){
-	//회원가입 버튼(회원가입 기능 작동)
-	$(".가입하기").click(function(){
-		$("#signup").attr("action", "/signup/info");
-		$("#signup").submit();
-	});
+$(document).ready(function () {
+    //회원가입 버튼(회원가입 기능 작동)
+    $(".가입하기").click(function () {
+        $("#signup").attr("action", "/signup/info");
+        $("#signup").submit();
+    });
 });
 
 
@@ -407,7 +407,7 @@ function openKakaoPostcode() {
             document.getElementById("addr2").value = data.address; // 주소 넣기
             document.getElementById("detail_addr_form").style.display = "block";
             document.querySelector("#detail_addr").focus(); //상세입력 포커싱
-            document.getElementById('postal_code').style.display= "block";
+            document.getElementById('postal_code').style.display = "block";
             document.getElementById('post_num').value = data.zonecode;  // 우편번호 가져오기
         }
     }).open();
@@ -415,33 +415,30 @@ function openKakaoPostcode() {
 
 
 
-
-
-
-
-
-
-
 // 아이디 중복 확인
 
-function checkId(){
-    var memberId = $("#input_id").val();    // 아이디 입력값
-	
+function checkId() {
+    var id = $("#input_id").val();    // 아이디 입력값
+
     $.ajax({
-        url:"/signup/infoa",
-        type:"post",
-        data:{id : memberId},
-        success:function(cntId){
-            if(cntId == 0) {          // 0이면 사용가능 
+        url: "/signup/infoa",
+        type: "post",
+        data: { id: id },
+        dataType: 'json',
+        success: function (cntId) {
+            if (cntId == 0) {          // 0이면 사용가능 
+                console.log(" 사용가능 ")
                 popup_on2();
-            } else {                // 1이면 중복
+
+            } else if (cntId == 1) {                // 1이면 중복
+                console.log(" 중복이래 ")
                 popup_on3();
                 $("#input_id").val("");  //중복시 초기화 
             }
         },
-        error: function(xhr, status, error) { // 에러 콜백 함수
-        console.error('AJAX 요청 실패:', status, error);
-    }
+        error: function (xhr, status, error) { // 에러 콜백 함수
+            console.error('AJAX 요청 실패:', status, error);
+        }
     });
 };
 
@@ -449,44 +446,48 @@ function checkId(){
 // 이메일 중복 확인
 function checkEmail() {
     var email = $("#input_email").val();       // 이메일 입력값
-    
+
     $.ajax({
-        url:"/signup/infob",
+        url: "/signup/infob",
         type: "post",
-        data:{email : email},
-        success:function(cntEmail){
-            if(cntEmail == 0){                   // 0이면 사용 가능
+        data: { email: email },
+        dataType: 'json',
+        success: function (cntEmail) {
+            if (cntEmail == 0) {                   // 0이면 사용 가능
                 popup_on4();
-            } else {                          // 1이면 이메일 중복
-                popup_on5();    
+            } else if (cntId == 1) {                          // 1이면 이메일 중복
+                popup_on5();
                 $("#input_email").val("");  // 중복시 이메일 입력창 초기화
             }
         },
-        error:function(xhr,status,error){ // 에러 콜백 함수
+        error: function (xhr, status, error) { // 에러 콜백 함수
             console.log("AJAX 요청 실패", status, error)
         }
     });
 };
 
+
 // 휴대폰 번호 중복 검사 및 인증
-function checkHp(){
+function checkHp() {
     var tel = $("#input_hp").val();
 
     $.ajax({
-        url:"/signup/infoc",
+        url: "/signup/infoc",
         type: "post",
-        data:{tel : tel},
-        success: function(cntTel){
-            if(cntTel == 0){            // 0이면 사용 가능, 인증번호 전송
+        data: { tel: tel },
+        dataType: 'json',
+        success: function (cntTel) {
+            if (cntTel == 0) {            // 0이면 사용 가능, 인증번호 전송
                 popup_on6();
-            } else {                  // 1이면 중복
+            } else if (cntId == 1) {                  // 1이면 중복
                 popup_on7();
                 $("#input_hp").val(""); // 휴대폰 번호 창 초기화
             }
-
+        },
+        error: function (xhr, status, error) { // 에러 콜백 함수
+            console.log("AJAX 요청 실패", status, error)
         }
     });
-
 };
 
 

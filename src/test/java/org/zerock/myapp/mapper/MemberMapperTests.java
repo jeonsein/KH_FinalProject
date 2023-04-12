@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.zerock.myapp.domain.MemberVO;
+import org.zerock.myapp.domain.MemberDTO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -46,39 +46,8 @@ public class MemberMapperTests {
 		log.info("\t+ this.userService: {}", this.memberMapper);
 		
 	} // beforeAll()
+		
 	
-	@Test
-	void contextLoads() {
-		log.trace("contextLoads() invoked.");
-	
-	} // contextLoads()
-	
-////	회원가입 테스트
-////	@Disabled
-//	@Test
-//	@Order(1)
-//	@DisplayName("memberJoin Test")
-//	@Timeout(value=1, unit=TimeUnit.SECONDS)
-//	void memberJoin() throws Exception {
-//		MemberVO memberVO = new MemberVO();
-//		
-//		memberVO.setMEMBER_ID("TEST_SENGNA");
-//		memberVO.setMEMBER_PW("TEST_SENGNA");
-//		memberVO.setMEMBER_NAME("TEST_SENGNA");
-//		memberVO.setMEMBER_MAIL("TEST_SENGNA");
-//		memberVO.setMEMBER_HP("1055555555");
-//		memberVO.setMEMBER_ADDR1("TEST_SENGNA");
-//		memberVO.setMEMBER_ADDR2("TEST_SENGNA");
-//		memberVO.setMEMBER_ZIPCODE(123456);
-//		
-//		memberMapper.memberJoin(memberVO);
-//	
-//		log.info("memberVO: {}", memberVO);
-//
-//		
-//	} // memberJoin()
-//	
-//	
 ////	로그인 테스트
 ////	@Disabled
 //	@Test
@@ -103,26 +72,26 @@ public class MemberMapperTests {
 	@Order(1)
 	@DisplayName("memberSignup")
 	@Timeout(value = 1, unit = TimeUnit.MINUTES)
-	public void memberSignup() throws Exception{
+	public void memberSignup(MemberDTO memberDTO) throws Exception{
 		log.info("memberSignup() invoked.");
 		
-		MemberVO memberVO = new MemberVO();
-		
-		memberVO.setId("aaa");
-		memberVO.setPassword("1234567890z");
-		memberVO.setName("차은우");
-		memberVO.setEmail("eunwoochachacha@gmail.com");
-		memberVO.setTel("01035552020");
-		memberVO.setAddress1(12345);
-		memberVO.setAddress2("강남역 10번 출구");
-		memberVO.setAddress3("dd");
-		memberVO.setGender("남자");
-		memberVO.setAdminCk(1);
-		memberVO.setBirth_date("1999-01-01");
-//		memberVO.setJoinDate(1991-01-01);
 		
 		
-		memberMapper.memberSignup(memberVO);
+		memberDTO.setId("ho0song");
+		memberDTO.setPassword("1234567890z");
+		memberDTO.setName("차은우");
+		memberDTO.setEmail("eunwoochachacha@gmail.com");
+		memberDTO.setTel("01035552020");
+		memberDTO.setAddress1(12345);
+		memberDTO.setAddress2("강남역 10번 출구");
+		memberDTO.setAddress3("dd");
+		memberDTO.setGender("남자");
+		memberDTO.setAdminCk(1);
+		memberDTO.setBirth_date("1999-01-01");
+//		memberDTO.setSignup_date(1991-01-01 21:09:10);
+		
+		
+		memberMapper.memberSignupTest(memberDTO);
 		
 	} // memberSignup
 	

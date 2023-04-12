@@ -23,8 +23,8 @@ public class HpCheckController {
 	HpCheckService hpCheckService;
 	
 	@PostMapping("/infoc")
-	@ResponseBody
-	public int hpCheck(@RequestParam("tel") String tel) {
+	
+	public @ResponseBody int hpCheck(@RequestParam("tel") String tel) {
 			log.trace("tel invoked 핸드폰 중복확인", tel);
 		
 		int cntTel = hpCheckService.hpCheck(tel);
