@@ -84,5 +84,6 @@ public class LoginController {			// POJO
 	} // dummyLogout()
 	
 	// 부계정으로 되는지 연습!
+	// 본ㄱㅖ정으로 돌리기
 	
 } // end class
