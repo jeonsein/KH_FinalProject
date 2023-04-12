@@ -102,17 +102,17 @@
                 </div>				
 				<table class="cart_table">		
 					<tbody>
-						<c:forEach items="${cartInfo}" var="ci">
+						<c:forEach items="${cartinfo}" var="cartinfo">
 							<tr>
 								<td class="td_width_1 cart_info_td">
 									<input type="checkbox" class="individual_cart_checkbox checkboxinput" checked="checked">
-									<input type="hidden" class="individual_bookPrice_input" value="${ci.bookPrice}">
-									<input type="hidden" class="individual_salePrice_input" value="${ci.salePrice}">
-									<input type="hidden" class="individual_bookCount_input" value="${ci.bookCount}">
-									<input type="hidden" class="individual_totalPrice_input" value="${ci.salePrice * ci.bookCount}">
-									<input type="hidden" class="individual_point_input" value="${ci.point}">
-									<input type="hidden" class="individual_totalPoint_input" value="${ci.totalPoint}">
-									<input type="hidden" class="individual_bookId_input" value="${ci.bookId}">								
+									<input type="hidden" class="individual_bookPrice_input" value="${cartinfo.bookPrice}">
+									<input type="hidden" class="individual_salePrice_input" value="${cartinfo.salePrice}">
+									<input type="hidden" class="individual_bookCount_input" value="${cartinfo.bookCount}">
+									<input type="hidden" class="individual_totalPrice_input" value="${ci.salePrice * cartinfo.bookCount}">
+									<input type="hidden" class="individual_point_input" value="${cartinfo.point}">
+									<input type="hidden" class="individual_totalPoint_input" value="${cartinfo.totalPoint}">
+									<input type="hidden" class="individual_bookId_input" value="${cartinfo.bookId}">								
 								</td>
 								<td class="td_width_2">
 									<div class="image_wrap" data-bookid="${ci.imageList[0].bookId}" data-path="${ci.imageList[0].uploadPath}" data-uuid="${ci.imageList[0].uuid}" data-filename="${ci.imageList[0].fileName}">
