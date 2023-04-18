@@ -1,20 +1,11 @@
 package org.zerock.myapp.controller;
 
-
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.myapp.domain.Criteria;
@@ -90,30 +81,5 @@ public class ProductContoller {
 		} // try-catch
 	} // info
 	
-	
-	/* [별이] 이미지는 모든 곳에서 접근이 가능하도록! */
-	@GetMapping("/display")
-	public ResponseEntity<byte[]> getImage(String fileName) {
-		
-		log.info("getImage()................."+fileName);
-		
-		File file = new File("c:\\upload\\"+fileName);
-		
-		ResponseEntity<byte[]> result = null;
-		
-		try {
-			HttpHeaders header = new HttpHeaders();
-			header.add("Content-type", Files.probeContentType(file.toPath()));
-			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} // try-catch
-		
-		return result;
-		
-	} // ResponseEntity
-	
-	
-	
+
 } // end class
