@@ -4,93 +4,62 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
+<!-- 따옴표가 필요하면 #{}, 필요하지 않으면 ${} -->
 <mapper namespace="org.zerock.myapp.mapper.ProductMapper">
-   
-   
     <select id="SelectOrder" resultType="org.zerock.myapp.domain.ProductVO">
-        SELECT pno, pname, content, image, price, discount, 
+        <!-- SELECT pno, pname, content, image, price, discount, 
         brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
         (price * (discount /100)), 10) as disprice 
         FROM product_list
-        ORDER BY #{order} asc
+        ORDER BY ${order} ${order1}
+        OFFSET ( #{currPage} -1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY  -->
+        
+        SELECT pno, pname, content, image, price, discount, 
+        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
+        (price * (discount /100)), 10) as disprice,
+         ( SELECT count(pno)
+	          FROM product_list 
+	          ${where} ${brand} ) as totalCount 
+        FROM product_list 
+        ${where} ${brand}
+        ${orderby} ${order} ${order1}
         OFFSET ( #{currPage} -1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY
+        
     </select>
 
     <select id="SelectDetail" resultType="org.zerock.myapp.domain.ProductDTO">
         SELECT pno, pname, content, image, price, discount, 
         brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
-        (price * (discount /100)), 10) as disprice, subimage1, subimage2, subimage3, subimage4
+        (price * (discount /100)), 10) as disprice, subimage1, subimage2, subimage3, subimage4, ptitle
         FROM product_list
         WHERE pno = #{pno}
     </select>
     
-
-    <!-- [별이] 관리자페이지 상품 등록 -->
+    <select id="SelectApiRecipes" resultType="org.zerock.myapp.domain.ApiRecipesRowVO">
+    	SELECT *
+    	FROM product_recipes 
+    	WHERE rcp_parts_dtls like '%'||#{title}||'%'
+    	ORDER BY rcp_seq asc
+    </select>
     
-    <!-- 상품 상세 조회 -->
-	<select id="select" resultType="org.zerock.myapp.domain.ProductVO">
-		SELECT * FROM PRODUCT
-		WHERE no = #{no}
-	</select>
-	
-	
-    <!-- 상품 등록 -->
-    <insert id="insert">
-		INSERT
-        INTO PRODUCT (category, name, price, discount, discount_price, weight, origin, stock, farm_no, main_image, main_image2, sub_image1, sub_image2, sub_image3, sub_image4, content, content_image)
-         VALUES (#{category}, #{name}, #{price}, #{discount}, #{discount_price}, #{weight}, #{origin}, #{stock}, #{farm_no}, #{main_image}, #{main_image2}, #{sub_image1}, #{sub_image2}, #{sub_image3}, #{sub_image4}, #{content}, #{content_image})    
-	</insert>
-	
-	
-	<!-- 상품 이미지 등록 -->
-	<insert id="imageInsert">
-		INSERT
-		INTO MYMG_IMAGE(product_no, fileName, uploadPath, uuid) 
-		VALUES (#{product_no}, #{fileName}, #{uploadPath}, #{uuid})
-	</insert>
-	
-	<!-- 상품 이미지 수정 -->
-	<update id="update">
-		UPDATE
-        	PRODUCT (category, name, price, discount, discount_price, weight, origin, stock, farm_no, main_image, main_image2, sub_image1, sub_image2, sub_image3, sub_image4, content, content_image)
-        SET 
-        	category = #{category}, 
-        	name = #{name}, 
-        	price = #{price}, 
-        	discount = #{discount}, 
-        	discount_price = #{discount_price}, 
-        	weight = #{weight}, 
-        	origin= #{origin}, 
-        	stock = #{stock}, 
-        	farm_no = #{farm_no}, 
-        	main_image = #{main_image}, 
-        	main_image2 = #{main_image2}, 
-        	sub_image1 = #{sub_image1}, 
-        	sub_image2 = #{sub_image2}, 
-        	sub_image3 = #{sub_image3}, 
-        	sub_image4 = #{sub_image4}, 
-        	content = #{content}, 
-        	content_image = #{content_image}   
-		WHERE
-			no = #{no}
-	</update>
-	
-	
-	<!-- 상품 이미지 삭제 -->
-	<delete id="delete">
-		DELETE FROM PRODUCT
-		WHERE no = #{no}
-	</delete>
-	
-	
-	
-	<!-- 카테고리 등록 -->
-	<select id="cateList" resultType="org.zerock.myapp.domain.CategoryVO">
-		SELECT * FROM category ORDER BY code
-	</select> 
     
+    <select id="SelectSearchBrand" resultType="org.zerock.myapp.domain.ProductVO">
+    	SELECT brandname
+        FROM product_list
+        GROUP BY brandname
+        ORDER BY brandname
+    </select>   
 
-	
-	
+    <select id="SelectSearchBrandGet" resultType="org.zerock.myapp.domain.ProductVO">
+        SELECT pno, pname, content, image, price, discount, 
+        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
+        (price * (discount /100)), 10) as disprice,
+	        ( SELECT count(pno)
+	          FROM product_list 
+	          WHERE brandname in (${brand})) as totalCount 
+        FROM product_list
+        WHERE brandname in (${brand}) 	
+	   OFFSET ( #{currPage} -1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY       	
+    </select>
+    
 </mapper>

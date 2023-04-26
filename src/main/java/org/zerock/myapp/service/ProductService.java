@@ -2,7 +2,7 @@ package org.zerock.myapp.service;
 
 import java.util.List;
 
-import org.zerock.myapp.domain.CategoryVO;
+import org.zerock.myapp.domain.ApiRecipesRowVO;
 import org.zerock.myapp.domain.Criteria;
 import org.zerock.myapp.domain.ProductDTO;
 import org.zerock.myapp.domain.ProductVO;
@@ -22,16 +22,16 @@ public interface ProductService {
 	// 4. 상품 상세 조회
 	public abstract ProductDTO getProductDetail(Integer pno) throws ServiceException;
 	
+	// 5. 공공데이터(레시피) 조회
+	public abstract List<ApiRecipesRowVO> getRecipes(String title) throws ServiceException;
 	
-//	----------------------------------
-//	[별이 4/14]
-	
-	// 5. 상품 등록
-	public abstract Boolean register(ProductDTO dto) throws ServiceException;
-	
-	// 6. 카테고리 등록
-	public abstract List<CategoryVO> getCateList() throws ServiceException;
-
+	// 6. 공공데이터(레시피) 갯수 조회
+	public abstract Integer getRecipesCount(String title) throws ServiceException;
 	
 	
+	// 7. 브랜드이름 전체 조회
+	public abstract List<ProductVO> getSearchBrandName() throws ServiceException;
+	
+	// 8. 검색된 브랜드 이름 조회
+	public abstract List<ProductVO> getSelectSearchBrandName(Criteria cri) throws ServiceException;
 } // end interface

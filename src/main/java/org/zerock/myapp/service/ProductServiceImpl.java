@@ -6,8 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.myapp.domain.AttachImageVO;
-import org.zerock.myapp.domain.CategoryVO;
+import org.zerock.myapp.domain.ApiRecipesRowVO;
 import org.zerock.myapp.domain.Criteria;
 import org.zerock.myapp.domain.ProductDTO;
 import org.zerock.myapp.domain.ProductVO;
@@ -35,12 +34,12 @@ public class ProductServiceImpl implements ProductService, InitializingBean{
 		
 		try {
 			Objects.requireNonNull(this.mapper);
-			log.info("\t 1. this.mapper : {}", this.mapper);
+//			log.info("\t 1. this.mapper : {}", this.mapper);
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} //try-catch
 
-	}
+	} // afterPropertiesSet
 
 	@Override
 	public List<ProductVO> getList(Criteria cri) throws ServiceException {
@@ -91,47 +90,55 @@ public class ProductServiceImpl implements ProductService, InitializingBean{
 		} // try-catch
 		
 	} //getProductDetail
-
-//	==================================================
-//	[별이]
 	
-	/* 상품 등록 */
 	@Override
-	public Boolean register(ProductDTO dto) throws ServiceException {
-	    log.trace("register({}) invoked.", dto);
-
-	    try {
-	        // 상품 등록
-	        boolean isInserted = mapper.insert(dto) == 1;
-
-	        if (isInserted == true) {
-	            // 이미지 등록
-//	            for (AttachImageVO attach : dto.getImageList()) {
-//	                attach.setProduct_no(dto.getNo());
-//					/* mapper.imageInsert(attach); */
-//	            }
-	        }
-
-	        return isInserted;
-	    } catch (Exception e) {
-	        throw new ServiceException(e);
-	    } // try-catch
-	    
-	} // register
-
-	
-	/* 카테고리 등록 */
-	@Override
-	public List<CategoryVO> getCateList() throws ServiceException {
-		log.trace("getCateList() invoked.");
+	public List<ApiRecipesRowVO> getRecipes(String title) throws ServiceException {
+		log.trace("\t getRecipes({}) invoked", title);
 		
 		try {
-			return this.mapper.cateList();
+			return this.mapper.SelectApiRecipes(title);
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} // try-catch
+
+	} // getRecipes
 	
-	} // getCateList
+	@Override
+	public Integer getRecipesCount(String title) throws ServiceException {
+		log.trace("\t getRecipesCount({}) invoked", title);
 		
+		try {
+			return this.mapper.SelectApiRecipesCount(title);
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+		
+	} //getRecipesCount
+	
+	
+	@Override
+	public List<ProductVO> getSearchBrandName() throws ServiceException {
+		log.trace("\t getSearchBrandName() invoked");
+		
+		try {
+			return this.mapper.SelectSearchBrand();
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} // getSearchBrandName
+
+	@Override
+	public List<ProductVO> getSelectSearchBrandName(Criteria cri) throws ServiceException {
+		log.trace("\t getSelectSearchBrandName() invoked");
+		
+		try {
+			return this.mapper.SelectSearchBrandGet(cri);
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+		
+	} // getSelectSearchBrandName
+	
+	
 
 } // end class
