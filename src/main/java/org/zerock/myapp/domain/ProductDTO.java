@@ -81,5 +81,8 @@ public class ProductDTO {
    /* 조회수 */
    private Integer hit;
    
+   /* 타이틀-레시피 */
+   private String title;
+   
    
 } // end class

@@ -21,6 +21,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.zerock.myapp.domain.AttachImageVO;
 import org.zerock.myapp.domain.Criteria;
+import org.zerock.myapp.domain.Page_ProductDTO;
 import org.zerock.myapp.domain.ProductDTO;
 import org.zerock.myapp.domain.ProductVO;
 import org.zerock.myapp.exception.ControllerException;
@@ -74,29 +75,13 @@ public class ProductControllerTests {
 			cri.setAmount(12);
 			cri.setCurrPage(1);
 			
-			List<ProductVO> list = this.service.getList(cri);
+			List<Page_ProductDTO> list = this.service.getList(cri);
 			list.forEach(log::info);
 		} catch(Exception e) {
 			throw new ControllerException(e);
 		} // try-catch
 		
 	} // testGetList
-	
-//	@Disabled
-	@Test
-	@Order(2)
-	@DisplayName("testGetRecodeCount")
-	@Timeout(value=1, unit=TimeUnit.SECONDS)
-	void testGetRecodeCount() throws  ControllerException{
-		log.trace("\t testPage() invoked");
-		
-		try {
-			Integer tempCount = this.service.getRecodeCount();
-			log.info("\t tempCount : {}", tempCount);
-		} catch (Exception e) {
-			throw new ControllerException(e);
-		} // try-catch
-	} // testPage
 	
 //	@Disabled
 	@Test
@@ -107,15 +92,13 @@ public class ProductControllerTests {
 		log.trace("\t testPage() invoked");
 		
 		try {
-			List<ProductVO> list = this.service.getOrder(cri);
+			List<Page_ProductDTO> list = this.service.getOrder(cri);
 			list.forEach(log::info);
 		} catch (Exception e) {
 			throw new ControllerException(e);
 		} // try-catch
 	} // testGetMenuOrder
 	
-	
-
 //	@Disabled
 	@Test
 	@Order(4)
@@ -127,7 +110,7 @@ public class ProductControllerTests {
 		try {
 			Integer pno = 1;
 			
-			ProductDTO dto = this.service.getProductDetail(pno);
+			Page_ProductDTO dto = this.service.getProductDetail(pno);
 	
 			log.info("\t dto : {}", dto);
 		} catch (Exception e) {

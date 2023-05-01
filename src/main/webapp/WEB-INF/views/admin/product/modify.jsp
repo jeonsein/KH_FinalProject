@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 목록</title>
+    <title>상품 수정</title>
     <link rel="stylesheet" href="/resources/css/admin/common.css">
    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -189,11 +189,11 @@
 <!-- 메인 - 공지사항 글 목록 테이블, 이동페이지, 수정, 삭제 -->            
                 
         <div class="content">
-            <h2>상품등록 <span class="test">테스트</span></h2>
+            <h2>상품수정 <span class="test">테스트</span></h2>
             <div class="write">
                 <form action="/admin/product/modify" method="post" enctype="multipart/form-data">
                     <div class="product">
-					<p><input type="hidden" name="no" value="${product.no}"  readonly></p>
+					<input type="hidden" name="no" value="${product.no}"  readonly>
 
                        <div class="box1">
                            <div class="box2">
@@ -243,6 +243,17 @@
                            </div>                      
                        </div>
                        <br>
+                       
+                       <div class="box1">
+                           <div class="box2">
+                               <p>타이틀-레시피('사과, 오렌지' 처럼 과일 명만 적기)</p>
+                           </div>
+                           <div class="box3">
+                               <input type="text"  name="title" id="info" value="${product.title}">
+                           </div>                      
+                       </div>
+                       <br>
+                       
    
                        <div class="box1">
                            <div class="box2">
@@ -311,12 +322,12 @@
                        <input type="hidden"  name="product_no"  id="info" >
                        
                        <div class="box1">
-                             <div class="box2">
+                           <div class="box2">
                                <p>메인 이미지</p>
                            </div>
                            <div class="box3">
-                       <input type="file" id="main_image" name="files" value="${product.main_image}">
-                        <div class="select_main_image"><img src="" /></div>
+                           <input type="file" id="main_image" name="files" />
+                        <div class="select_main_image"><img src="${product.main_image}" id="main_image" /></div>
                                      
                            <script>
                               $("#main_image").change(function(){
@@ -332,34 +343,8 @@
                               });
                            </script>
                              </div>
-                  </div>
-                     <br>
-                     
-                     
-                     <div class="box1">
-                             <div class="box2">
-                               <p>메인(썸네일) 이미지</p>
-                           </div>
-                           <div class="box3">
-                       <input type="file" id="main_image2" name="files" value="${product.main_image2}">
-                        <div class="select_main_image2"><img src="" /></div>
-                                     
-                           <script>
-                              $("#main_image2").change(function(){
-                                 if(this.files && this.files[0]) {
-                                                  
-                                    var reader = new FileReader;
-                                                     
-                                    reader.onload = function(data) {
-                                       $(".select_main_image2 img").attr("src", data.target.result).width(200);        
-                                    }
-                                    reader.readAsDataURL(this.files[0]);
-                                 }
-                              });
-                           </script>
-                             </div>
-                  </div>
-                     <br>
+                       </div>
+                       <br>
                      
    
                        <div class="box1">
@@ -367,8 +352,8 @@
                                <p>서브 이미지1</p>
                            </div>
                            <div class="box3">
-                       <input type="file" id="sub_image1" name="files"  value="${product.sub_image1}" />
-                        <div class="select_sub_image1"><img src="" /></div>
+                           <input type="file" id="sub_image1" name="files" />
+                        <div class="select_sub_image1"><img src="${product.sub_image1}" id="sub_image1" /></div>
                                      
                            <script>
                               $("#sub_image1").change(function(){
@@ -377,7 +362,7 @@
                                     var reader = new FileReader;
                                                      
                                     reader.onload = function(data) {
-                                       $(".select_sub_image1 img").attr("src", data.target.result).width(200);       
+                                       $(".select_sub_image1 img").attr("src", data.target.result).width(200);        
                                     }
                                     reader.readAsDataURL(this.files[0]);
                                  }
@@ -393,8 +378,8 @@
                                <p>서브 이미지2</p>
                            </div>
                            <div class="box3">
-                       <input type="file" id="sub_image2" name="files" value="${product.sub_image2}" />
-                        <div class="select_sub_image2"><img src="" /></div>
+                           <input type="file" id="sub_image2" name="files" />
+                        <div class="select_sub_image2"><img src="${product.sub_image2}" id="sub_image2" /></div>
                                      
                            <script>
                               $("#sub_image2").change(function(){
@@ -409,7 +394,7 @@
                                  }
                               });
                            </script>
-                             </div>             
+                             </div>
                        </div>
                        <br>
                        
@@ -417,9 +402,10 @@
                        <div class="box1">
                            <div class="box2">
                                <p>서브 이미지3</p>
+                           </div>
                            <div class="box3">
-                       <input type="file" id="sub_image3" name="files" value="${product.sub_image3}" />
-                        <div class="select_sub_image3"><img src="" /></div>
+                           <input type="file" id="sub_image3" name="files" />
+                        <div class="select_sub_image3"><img src="${product.sub_image3}" id="sub_image3" /></div>
                                      
                            <script>
                               $("#sub_image3").change(function(){
@@ -434,8 +420,7 @@
                                  }
                               });
                            </script>
-                             </div>           
-                       </div>
+                             </div>
                        </div>
                        <br>
    
@@ -445,8 +430,8 @@
                                <p>서브 이미지4</p>
                            </div>
                            <div class="box3">
-                       <input type="file" id="sub_image4" name="files" value="${product.sub_image4}" />
-                        <div class="select_sub_image4"><img src="" /></div>
+                           <input type="file" id="sub_image4" name="files" />
+                        <div class="select_sub_image4"><img src="${product.sub_image4}" id="sub_image4" /></div>
                                      
                            <script>
                               $("#sub_image4").change(function(){
@@ -481,8 +466,8 @@
                                <p>상세정보내용 이미지</p>
                            </div>
                            <div class="box3">
-                       <input type="file" id="content_image" name="files" value="${product.content_image}" />
-                        <div class="select_content_image"><img src="" /></div>
+                           <input type="file" id="content_image" name="files" />
+                        <div class="select_content_image"><img src="${product.content_image}" id="content_image" /></div>
                                      
                            <script>
                               $("#content_image").change(function(){
@@ -524,16 +509,30 @@
 
 <script>   
 //  ================== 1. 버튼을 클릭하면 이동함. =============================
-    var listBtn = document.querySelector('#listBtn');
    
-   //목록 버튼을 눌러 목록으로 돌아가기
-   listBtn.addEventListener('click', function() {
-      console.log('listBtn clicked');
-      location.href='/admin/product/list';
-   });
+	var listBtn = document.querySelector('#listBtn');
+	var removeBtn = document.querySelector('#removeBtn');
+	
+	//목록 버튼을 눌러 목록으로 돌아가기
+	listBtn.addEventListener('click', function() {
+		console.log('listBtn clicked');
+		location.href='/admin/product/list';
+	});
    
 
-        
+	// 삭제 버튼을 눌러 목록으로 돌아가기
+	removeBtn.addEventListener('click', function(){
+		console.log('removeBtn clicked ㅇ_<');
+
+		//form 태그를 조작해서 삭제요청을 전송! 
+		var form = document.querySelector('form');
+		console.log(form.constructor.prototype);
+
+
+		form.setAttribute('method', 'POST');
+		form.setAttribute('action', '/admin/product/remove');
+		form.submit();
+	});
 </script>
 <script>
 //================== 2. 위지윅 편집기 적용 =============================

@@ -7,23 +7,42 @@
 
 <mapper namespace="org.zerock.myapp.mapper.ProductMapper">
    
-   
-    <select id="SelectOrder" resultType="org.zerock.myapp.domain.ProductVO">
-        SELECT pno, pname, content, image, price, discount, 
-        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
-        (price * (discount /100)), 10) as disprice 
-        FROM product_list
-        ORDER BY #{order} asc
+   <!-- 04/29 진호 -->
+   <!-- 목록 페이지 사이드 검색 -->
+    <select id="SelectOrder" resultType="org.zerock.myapp.domain.Page_ProductDTO">        
+        SELECT no, name, price, discount, discount_price, main_image, weight,
+         ( SELECT count(no)
+	          FROM product 
+	          ${where} ${origin} ${testAnd} ${weight_info} ${testAnd1} ${price_info} ${testAnd2} ${code_info}) as totalCount 
+        FROM product 
+        ${where} ${origin} ${testAnd} ${weight_info} ${testAnd1} ${price_info} ${testAnd2} ${code_info}
+        ${orderby} ${order} ${order1}
         OFFSET ( #{currPage} -1) * #{amount} ROWS FETCH NEXT #{amount} ROWS ONLY
     </select>
 
-    <select id="SelectDetail" resultType="org.zerock.myapp.domain.ProductDTO">
-        SELECT pno, pname, content, image, price, discount, 
-        brandname, insert_ts, readcount, (price - (price * (discount / 100))) - mod(price - 
-        (price * (discount /100)), 10) as disprice, subimage1, subimage2, subimage3, subimage4
-        FROM product_list
-        WHERE pno = #{pno}
+	<!-- 상세정보 페이지 -->
+    <select id="SelectDetail" resultType="org.zerock.myapp.domain.Page_ProductDTO">
+        SELECT no, name, content, main_image, price, discount, discount_price, sub_image1, 
+        sub_image2, sub_image3, sub_image4, title
+        FROM product
+        WHERE no = #{no}
     </select>
+    
+    <!-- 공공데이터(레시피) -->
+    <select id="SelectApiRecipes" resultType="org.zerock.myapp.domain.ApiRecipesRowVO">
+    	SELECT *
+    	FROM product_recipes 
+    	WHERE rcp_parts_dtls like '%'||#{title}||'%'
+    	ORDER BY rcp_seq asc
+    </select>
+    
+    <!-- 원산지 정보 -->
+    <select id="SelectSearchOrigin" resultType="org.zerock.myapp.domain.Page_ProductDTO">
+    	SELECT origin
+        FROM product
+        GROUP BY origin
+        ORDER BY origin
+    </select>  
     
 
     <!-- [별이] 관리자페이지 상품 등록 -->
@@ -56,8 +75,8 @@
     <!-- 상품 등록 -->
     <insert id="insert">
 		INSERT
-        INTO PRODUCT (category, name, price, discount, discount_price, weight, origin, stock, farm_no, main_image, main_image2, sub_image1, sub_image2, sub_image3, sub_image4, content, content_image)
-         VALUES (#{category}, #{name}, #{price}, #{discount}, #{discount_price}, #{weight}, #{origin}, #{stock}, #{farm_no}, #{main_image}, #{main_image2}, #{sub_image1}, #{sub_image2}, #{sub_image3}, #{sub_image4}, #{content}, #{content_image})    
+        INTO PRODUCT (category, name, price, discount, discount_price, weight, origin, stock, farm_no, title, main_image, sub_image1, sub_image2, sub_image3, sub_image4, content, content_image)
+         VALUES (#{category}, #{name}, #{price}, #{discount}, #{discount_price}, #{weight}, #{origin}, #{stock}, #{farm_no}, #{title}, #{main_image}, #{sub_image1}, #{sub_image2}, #{sub_image3}, #{sub_image4}, #{content}, #{content_image})    
 	</insert>
 	
 	
@@ -81,9 +100,9 @@
         	weight = #{weight}, 
         	origin= #{origin}, 
         	stock = #{stock}, 
-        	farm_no = #{farm_no}, 
+        	farm_no = #{farm_no},
+        	title = #{title},
         	main_image = #{main_image}, 
-        	main_image2 = #{main_image2}, 
         	sub_image1 = #{sub_image1}, 
         	sub_image2 = #{sub_image2}, 
         	sub_image3 = #{sub_image3}, 

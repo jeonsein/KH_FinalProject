@@ -144,7 +144,7 @@
 			</form>
 
 			<!-- 주문 form -->
-			<form action="/order/${member.id}" method="get" class="order_form">
+			<form action="/order/${member.id}" method="post" class="order_form">
 			</form>													
 		</div>
     </main>

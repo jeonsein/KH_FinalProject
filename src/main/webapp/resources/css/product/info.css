@@ -1,0 +1,438 @@
+@charset "UTF-8";
+
+.container{
+    width: 80%;
+    margin: 20px auto;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-selct: none;
+    user-select: none;
+} 
+
+.images{
+    /* width: 500px;
+    height: 500px; */
+
+    position: relative;
+    display: inline-block;
+
+    margin: 50px 100px;
+    /* border: 1px solid blue; */
+}
+
+#main_img {
+    width: 500px;
+    height: 400px;
+}
+
+ul {
+    padding: 0;
+}
+
+.sub_img > li{
+    display: inline-block;
+    margin: 0;
+}
+
+.sub_img > li > img {
+    width: 110px;
+    height: 100px;
+
+    padding: 0 5px;
+}
+
+.sub_img > li:nth-of-type(0) {
+    float: left;
+}
+
+.sub_img > li:nth-last-of-type(3) {
+    float: right;
+}
+
+.info {
+    /* width: 500px;
+    height: 500px; */
+
+    position: absolute;
+    display: inline-block;
+
+    margin: 50px auto;
+
+    /* border: 1px solid red; */
+}
+
+.info > div {
+    margin: 0 0 30px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.price .disprice {
+    font-size: 1.1rem;
+}
+
+.price > span {
+    margin: 0 0 0 60px;
+    font-size: 1rem;
+}
+
+.disp {
+    margin: 0 0 0 60px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.disc {
+    padding: 0 30px;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #06e19a;
+}
+
+.buyNum {
+    margin: 0 !important;
+}
+.totalPrice > span {
+    margin: 0 0 0 100px;
+}
+
+.totalPrice > input {
+    width: 20%;
+
+    margin: 0 0 0 10px;
+
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    border: none;
+    outline: none;
+}
+
+.num {
+    display: inline-block;
+
+    border: 1px solid gray;
+}
+
+.num > li {
+    display: inline-block;
+    margin: 0;
+
+    padding: 5px 5px;
+}
+
+#minus {
+    cursor: pointer;
+}
+
+#plus {
+    cursor: pointer;
+}
+
+#p_num{
+    width: 20px;;
+    border: none;
+
+    text-align: center;
+}
+
+.btn > input {
+    width: 150px;
+    height: 50px;
+}
+
+.btn > input:nth-of-type(1){
+    margin: 0 20px 0 0;
+
+    font-weight: bold;
+    background-color: #06e19a;
+    border: none;
+    color: #ffffff
+}
+
+.btn > input:nth-of-type(2) {
+    font-weight: bold;
+    background-color: #000000;
+    border: none;
+    color: #ffffff
+}
+
+.detailInfo {
+    position: absolute;
+
+    width: 60%;
+    height: 100%;
+    
+    margin: 50px 100px;
+    /* border: 1px solid red; */
+}
+.detailInfoHead {
+    display: flex;
+}
+
+.p_Info {
+    width: 33%;
+    height: 50px;
+
+    display: inline-block;
+
+    text-align: center;
+    line-height: 50px;
+
+    font-weight: bold;
+    
+    border: 1px solid darkgray;
+    border-bottom: 1px;
+}
+
+.p_Return {
+    width: 33%;
+    height: 50px;
+
+    display: inline-block;
+
+    text-align: center;
+    line-height: 50px;
+    
+    font-weight: bold;
+
+    border: 1px solid darkgray;
+    border-left: 0;
+
+    background-color: lightgray;
+}
+
+.p_recipes {
+    width: 34%;
+    height: 50px;
+
+    display: inline-block;
+
+    text-align: center;
+    line-height: 50px;
+    
+    font-weight: bold;
+
+    border: 1px solid darkgray;
+    border-left: 0;
+
+    background-color: lightgray;
+}
+
+.de1 {
+    margin: 30px;
+}
+
+.p_Info_detail {
+    text-align: center;
+}
+
+.p_Return_detail {
+    display: none;
+}
+
+.p_repices_detail {
+    display: none;
+}
+
+.rep {
+    font-size: 14px;
+    line-height: 25px;
+}
+
+table{
+    width: 100%;
+}
+
+.td1, .td3 {
+    width: 20%;
+
+    font-size: 13px;
+    text-align: center;
+    line-height: 20px;
+
+    background-color: #F5F4F4;
+
+    border-top: 1px solid lightgray;
+}
+
+.td2, .td4 {
+    padding: 5px 15px;
+
+    font-size: 13px;
+    border-top: 1px solid lightgray;
+}
+
+.td3, .td4 {
+    border-bottom: 1px solid lightgray;
+}
+
+.td5, .td7, .td9 {
+    width: 20%;
+
+    font-size: 13px;
+    text-align: center;
+
+    background-color: #F5F4F4;
+
+    border-top: 1px solid lightgray;
+}
+
+.td6, .td8, .td10 {
+
+
+    padding: 10px 15px;
+
+    font-size: 13px;
+    border-top: 1px solid lightgray;
+}
+
+.td9, .td10 {
+    border-bottom: 1px solid lightgray;
+}
+
+.head {
+    padding: 50px 0 0 0;
+}
+
+.rep_lim {
+    font-size: 14px;
+    line-height: 25px;;
+}
+
+/* 레시피 */
+.repice_number {
+
+    padding: 10px 0 20px;
+
+    font-size: 30px;
+    font-weight: bold;
+    color :#E56D29
+}
+
+.nu_info {
+    width: 45%;
+    margin: 20px 0;
+
+    border: 10px solid #22D6B2;
+    border-radius: 10px;
+}
+
+.nu_head {
+    padding: 10px;
+
+    background-color: #22D6B2;
+
+}
+.nu_head_info {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nu_head_eng {
+    
+    padding: 0 0 0 10%;
+
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.nu_car, .nu_pro, .nu_fat, .nu_na {
+    padding: 10px;
+    border-bottom: 1px solid #22D6B2;   
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nu_car_num {
+    padding: 0 0 0 85px;
+    font-size: 16px;
+}
+
+.nu_pro_num {
+    padding: 0 0 0 100px;
+    font-size: 16px;
+}
+
+.nu_fat_num {
+    padding: 0 0 0 115px;
+    font-size: 16px;
+}
+
+.nu_na_num {
+    padding: 0 0 0 100px;
+    font-size: 16px;
+}
+
+.food_ing {
+    width: 70%;
+    padding: 10px;
+
+    border: 10px solid #22D6B2;
+    border-radius: 10px;
+    
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.food_head {
+    margin: 0 0 15px;
+
+    font-size: 25px;
+    border-bottom: 1px solid #22D6B2;
+}
+
+.manual {
+    padding: 40px 10px 10px;
+    
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.manual_img > img{
+    width: 200px;
+    height: 150px;
+
+    padding: 10px;
+}
+
+.tip {
+    padding: 30px 10px 100px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#recipeBody {
+    display: none;
+}
+
+/* 레시피 전체 보기 버튼 */
+#recipeBtn {
+    width: 50%;
+    height: 50px;
+
+    margin: 40px 0;
+
+    background-color: #22D6B2;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    color:#ffffff;
+}

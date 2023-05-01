@@ -138,7 +138,7 @@
 										<br><fmt:formatNumber value="${ol.totalPrice}" pattern="#,### 원" />
 										<input type="hidden" class="individual_productName_input" name="name" value="${ol.name}">
 										<input type="hidden" class="individual_productPrice_input" name="price" value="${ol.price}">		
-										<input type="hidden" class="individual_productCount_input"  name="Count" value="${ol.productCount}">
+										<input class="individual_productCount_input"  name="Count" value="${ol.productCount}">
 										<input type="hidden" class="individual_totalPrice_input" value="${ol.productCount * ol.price}">
 										<input class="individual_salePrice_input" name="Discount" value="${ol.salePrice}"> 
 										<input class="individual_productId_input" name="productId" value="${ol.productId}">
@@ -319,7 +319,7 @@
 			<input name="receiver_address2" type="hidden" value="">
 			<input name="receiver_address3" type="hidden" value="">
 			<input name="receiver_tel" type="hidden" value="">
-        	
+			
          </form>
 
 		 <button class="order_btn" >결제하기</button>
@@ -435,16 +435,20 @@
 
 		  		let product_no = $(element).find(".individual_productId_input").val();
 		  		let count = $(element).find(".individual_productCount_input").val();
+		  		let price = $(element).find(".individual_productPrice_input").val();
+		  		//totalPrice_span
 
 		  		let product_no_input = "<input name='orders[" + index + "].product_no' type='hidden' value='" + product_no + "'>";
-		  		form_contents += product_no_input;
+		  		form_contents += no_input;
 		  		let productCount_input = "<input name='orders[" + index + "].count' type='hidden' value='" + count + "'>";
 		  		form_contents += productCount_input;
+		  		let price_input = "<input name='orders[" + index + "].price' type='hidden' value='" + price + "'>";
+		  		form_contents += price_input;
 			});
 			$(".order_form").append(form_contents);
 		
 		  	/* 주문 양식 제출 */
-		  	$(".order_form").submit();
+		  	$(".order_form").submit();        
 		}); 
 	});
 	

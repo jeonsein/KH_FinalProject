@@ -64,10 +64,10 @@
             <div class="container3">
                 <a href="/main"><img id="logo" src="/resources/imgs/logo.png" alt="로고"></a>
         
-                <form class="search1" action="#" method="GET">
-                    <input class="search-txt" type="text" placeholder=" 검색어를 입력해주세요!">    
+                <form id="mainsearch" class="search1" action="/mainsearch" method="GET">
+                    <input class="search-txt" name="keyword" type="text" placeholder=" 검색어를 입력해주세요!">    
                     <button class="search-btn" type="submit"><img id="btn" src="/resources/imgs/search.png" alt="메인검색버튼"></button>
-                </form>   
+                </form>     
                  
             </div>
     </header>

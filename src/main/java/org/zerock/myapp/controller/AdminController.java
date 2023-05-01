@@ -40,7 +40,7 @@ import lombok.extern.log4j.Log4j2;
 @SessionAttributes({"product", "productDTO"})
 
 @Controller
-@RequestMapping("/admin/*")
+@RequestMapping("/admin")
 public class AdminController {
    
    
@@ -130,18 +130,66 @@ public class AdminController {
 	
 	/* 상품 수정 */
 	@PostMapping("/product/modify")
-	public String modify(ProductDTO dto, RedirectAttributes rttrs) 
+	public String modify(@RequestParam("files") List<MultipartFile> files, ProductDTO dto, RedirectAttributes rttrs) 
 			throws ControllerException {
 		
 		log.trace("remove({}, {}, {}) invoked.", dto, rttrs);
 		
 		try {
+			
+		            files.forEach( f-> {
+		               log.info("\t+1.Name:{}", f.getName());
+		               log.info("\t+2.originalfilename:{}", f.getOriginalFilename());
+		               log.info("\t+3.Contenttype:{}", f.getContentType());
+		               log.info("\t+4.Size:{}", f.getSize());
+		               log.info("\t ---------------------------");
+		               
+		               if(!"".equals(f.getOriginalFilename())) {
+		                  
+		                  //방법1
+		                  try {
+		                     f.transferTo(new File("C:/app/2023/eclipse/workspace/jee-2022-06/MYMG/src/main/webapp/resources/product/" +f.getOriginalFilename()));
+		                     for (int i = 0; i < files.size(); i++) {
+		                    	    MultipartFile file = files.get(i);
+		                    	    String filename = file.getOriginalFilename();
+
+		                    	    // 각 파일의 이름에 따라 DTO 객체의 필드 설정
+		                    	    switch (i) {
+		                    	        case 0:
+		                    	            dto.setMain_image(filename);
+		                    	            break;
+		                    	        case 1:
+		                    	            dto.setSub_image1(filename);
+		                    	            break;
+		                    	        case 2:
+		                    	            dto.setSub_image2(filename);
+		                    	            break;
+		                    	        case 3:
+		                    	            dto.setSub_image3(filename);
+		                    	            break;
+		                    	        case 4:
+		                    	            dto.setSub_image4(filename);
+		                    	            break;
+		                    	        case 5:
+		                    	            dto.setContent_image(filename);
+		                    	            break;
+		                    	        default:
+		                    	            break;
+		                    	    } // switch
+		                    	} // for
+		                  } catch(IOException e) {
+		                     e.printStackTrace();
+		                  } // try catch
+		                  
+		               } // if
+		            }); // .forEach
+		            
 			boolean success = this.service.modify(dto); 
 			log.info("\t: success : {}", success);
 			
 			rttrs.addAttribute("result", (success)? "success" : "failure"); 
 
-			return "redirect:/product/list";
+			return "redirect:/admin/product/list";
 		}catch(Exception e) {
 			throw new ControllerException(e);
 		} // try catch
@@ -162,7 +210,7 @@ public class AdminController {
 			
 			rttrs.addAttribute("result", (success)? "success" : "failure"); 
 			//성공했던 실패했든 그대로 있으면 안되고 이동시켜야 하기 때문에 리다이렉션 무조건 
-			return "redirect:/product/list"; // redirect 때문에 string으로 선언한듯
+			return "redirect:/admin/product/list"; // redirect 때문에 string으로 선언한듯
 		}catch(Exception e) {
 			throw new ControllerException(e);
 		} // try catch
@@ -222,21 +270,18 @@ public class AdminController {
                     	            dto.setMain_image(filename);
                     	            break;
                     	        case 1:
-                    	            dto.setMain_image2(filename);
-                    	            break;
-                    	        case 2:
                     	            dto.setSub_image1(filename);
                     	            break;
-                    	        case 3:
+                    	        case 2:
                     	            dto.setSub_image2(filename);
                     	            break;
-                    	        case 4:
+                    	        case 3:
                     	            dto.setSub_image3(filename);
                     	            break;
-                    	        case 5:
+                    	        case 4:
                     	            dto.setSub_image4(filename);
                     	            break;
-                    	        case 6:
+                    	        case 5:
                     	            dto.setContent_image(filename);
                     	            break;
                     	        default:
@@ -257,48 +302,13 @@ public class AdminController {
             rttrs.addAttribute("result", (success)? "success" : "failure"); 
             // KEY = 등록처리결과
 
-            return "redirect:/product/list"; // 실패했든 성공했든 여기로 이동
+            return "redirect:/admin/product/list"; // 실패했든 성공했든 여기로 이동
 
             } catch (Exception e) {
                throw new ControllerException(e);
             } // try-catch
          
       } // register-post
-
-   
-
- 
-   /* 이미지 삭제 */
-   @PostMapping("/deleteFile")
-   public ResponseEntity<String> deleteFile(String fileName) {
-      
-      log.info("deleteFile....................." + fileName);
-      
-      File file = null;
-      
-      try {
-         /* 썸네일 파일 삭제 */
-         file = new File("C:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
-         file.delete();
-         
-         /* 원본파일 삭제 */
-         String originFileName = file.getAbsolutePath().replaceFirst("s_", "");
-         log.info("originFileName : "+originFileName);
-         file = new File(originFileName);
-         file.delete();
-         
-         
-      }catch (Exception e) {
-
-         e.printStackTrace();
-         return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
-      } // try-catch
-      
-      return new ResponseEntity<String>("success", HttpStatus.OK);
-      
-   } // deleteFile
-   
-   
 
    
 } // end class

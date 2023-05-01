@@ -12,6 +12,7 @@ public class OrderDTO {
 	private Integer no; // 주문번호			-> MYMG_ORDER 테이블의 No 컬럼 인가..
 	private String receiver_name; // 배송 받는사람
 	private String member_id; // 주문 회원 아이디
+	private Integer product_no;
 //	private String memberAddr1; // 우편번호
 	private Integer receiver_address1; // 우편번호
 	private String receiver_address2; // 회원 주소

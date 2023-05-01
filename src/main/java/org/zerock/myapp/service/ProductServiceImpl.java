@@ -6,8 +6,10 @@ import java.util.Objects;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.myapp.domain.ApiRecipesRowVO;
 import org.zerock.myapp.domain.CategoryVO;
 import org.zerock.myapp.domain.Criteria;
+import org.zerock.myapp.domain.Page_ProductDTO;
 import org.zerock.myapp.domain.ProductDTO;
 import org.zerock.myapp.domain.ProductVO;
 import org.zerock.myapp.exception.ServiceException;
@@ -28,21 +30,21 @@ public class ProductServiceImpl implements ProductService, InitializingBean{
 	@Setter(onMethod_= { @Autowired })
 	private ProductMapper mapper;
 	
+	
+// [04/29 진호]	
 	@Override
 	public void afterPropertiesSet() throws ServiceException {   
 		log.trace("afterPropertiesSet() invoked");
 		
 		try {
 			Objects.requireNonNull(this.mapper);
-			log.info("\t 1. this.mapper : {}", this.mapper);
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} //try-catch
-
-	}
+	} // afterPropertiesSet
 
 	@Override
-	public List<ProductVO> getList(Criteria cri) throws ServiceException {
+	public List<Page_ProductDTO> getList(Criteria cri) throws ServiceException {
 		log.trace("\t getList({}) invoked", cri);
 		
 		try {
@@ -50,24 +52,10 @@ public class ProductServiceImpl implements ProductService, InitializingBean{
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} // try-catch
-		
 	} // getList
 	
 	@Override
-	public Integer getRecodeCount() throws ServiceException {
-		log.trace("\t getRecodeCount() invoked");
-		
-		try {
-			return this.mapper.SelectRecodeAll();
-		} catch(Exception e) {
-			throw new ServiceException(e);
-		} // try-catch
-		
-	} // getRecodeCount
-	
-	
-	@Override
-	public List<ProductVO> getOrder(Criteria cri) throws ServiceException {
+	public List<Page_ProductDTO> getOrder(Criteria cri) throws ServiceException {
 		log.trace("\t getMenuOrder() invoked");
 		
 		try {
@@ -75,21 +63,75 @@ public class ProductServiceImpl implements ProductService, InitializingBean{
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} // try-catch
-		
 	} // getMenuOrder
-	
-	
+
 	@Override
-	public ProductDTO getProductDetail(Integer pno) throws ServiceException {
-		log.trace("\t getProductDetail({}) invoked", pno);
+	public Page_ProductDTO getProductDetail(Integer no) throws ServiceException {
+		log.trace("\t getProductDetail({}) invoked", no);
 		
 		try {
-			return this.mapper.SelectDetail(pno);
+			return this.mapper.SelectDetail(no);
 		} catch(Exception e) {
 			throw new ServiceException(e);
 		} // try-catch
-		
 	} //getProductDetail
+	
+	@Override
+	public List<ApiRecipesRowVO> getRecipes(String title) throws ServiceException {
+		log.trace("\t getRecipes({}) invoked", title);
+		
+		try {
+			return this.mapper.SelectApiRecipes(title);
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} // getRecipes
+	
+	@Override
+	public Integer getRecipesCount(String title) throws ServiceException {
+		log.trace("\t getRecipesCount({}) invoked", title);
+		
+		try {
+			return this.mapper.SelectApiRecipesCount(title);
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} //getRecipesCount
+	
+	@Override
+	public List<Page_ProductDTO> getSearchOriginName() throws ServiceException {
+		log.trace("\t getSearchOriginName() invoked");
+		
+		try {
+			return this.mapper.SelectSearchOrigin();
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} // getSearchOriginName
+	
+	@Override
+	public List<Page_ProductDTO> getCategoryAll() throws ServiceException {
+		log.info("\t getCategory() invoked");
+		
+		try {
+			return this.mapper.SelectCategoryAll();
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} // getCategoryAll
+
+	@Override
+	public List<Page_ProductDTO> getCategory(Criteria cri) throws ServiceException {
+		log.info("\t getCategory() invoked");
+		
+		try {
+			return this.mapper.SelectCategory(cri);
+		} catch(Exception e) {
+			throw new ServiceException(e);
+		} // try-catch
+	} //getCategory
+	
+	
 
 //	==================================================
 //	[별이]

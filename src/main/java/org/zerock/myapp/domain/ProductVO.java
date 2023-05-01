@@ -84,5 +84,8 @@ public class ProductVO {
    /* 파일 경로 */
    private String filePath;   
    
+   /* 타이틀-레시피 */
+   private String title;
+   
    
 } // end class

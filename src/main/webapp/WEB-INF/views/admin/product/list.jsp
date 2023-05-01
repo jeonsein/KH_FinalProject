@@ -114,9 +114,9 @@
 <!-- 메인 - 공지사항 글 목록 테이블, 이동페이지, 수정, 삭제 -->            
                 
         <div class="content">
+        <form>
             <table>
                 <h2>상품목록 <span class="test">테스트</span></h2>
-                <!-- <a href="javascript:all_del()">전체선택 / 전체해제</a> -->
                 <thead>
 	                <tr>
 	                    <th><input type="checkbox" name="selectall" value="selectall" onclick="selectAll(this)"></th>
@@ -132,49 +132,45 @@
                             <td>${ProductDTO.no}</td>
                             <td><a href="/admin/product/get?no=${ProductDTO.no}">${ProductDTO.name}</a></td>
                             <td>${ProductDTO.reg_date}</td>
+                            <td><input type="hidden" name="no" value="${ProductDTO.no}"></td>
                         </tr>       
                     </c:forEach>    
                 </tbody>
             </table>
+		</form>
             
-            
-	 		<div class="pageInfo_wrap" >
-			  <form id=moveForm method="get">
-			    <div class="pageInfo_area">
-			    	<ul id="pageInfo" class="pageInfo">
-			    	
-			    		<!-- 이전페이지 버튼 -->
-			            <c:if test="${pageMaker.prev}">
-			                <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
-			            </c:if>
-			            
-		            	<!-- 각 번호 페이지 버튼 -->
-		                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-		                    <li class="pageInfo_btn "><a href="/admin/product/list?currPage=${num}&amount=${pageMaker.cri.amount}">${num}</a></li>
-		                </c:forEach>
-		             
-			            <!-- 다음페이지 버튼 -->
-			            <c:if test="${pageMaker.next}">
-			                <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
-			            </c:if>  
-		             </ul>
+		 		<div class="pageInfo_wrap" >
+					    <div class="pageInfo_area">
+					    	<ul id="pageInfo" class="pageInfo">
+					    	
+					    		<!-- 이전페이지 버튼 -->
+					            <c:if test="${pageMaker.prev}">
+					                <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+					            </c:if>
+					            
+				            	<!-- 각 번호 페이지 버튼 -->
+				                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				                    <li class="pageInfo_btn "><a href="/admin/product/list?currPage=${num}&amount=${pageMaker.cri.amount}">${num}</a></li>
+				                </c:forEach>
+				             
+					            <!-- 다음페이지 버튼 -->
+					            <c:if test="${pageMaker.next}">
+					                <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+					            </c:if>  
+				             </ul>
+				            
+		            	</div>
 		            
-            	</div>
-            
-            
-	            <div class="button1">
-	 				<button type="button" id="registerBtn">등록</button>
-	                <button type="button" id="removeBtn">삭제</button>
-	            </div>
-
-			        <input type="hidden" name="currPage" value="${pageMaker.cri.currPage }">
-			        <input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-		        
-            </form>
-           </div>
+		            
+			            <div class="button1">
+			 				<button type="button" id="registerBtn">등록</button>
+			                <button type="button" id="removeBtn">삭제</button>
+			            </div>
+		
+					        <input type="hidden" name="currPage" value="${pageMaker.cri.currPage }">
+					        <input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+	           </div>
         </div>
-        
-
     </div>
 </main>
 
@@ -240,55 +236,53 @@
             alert('result: ' + result);
         } // if
         
+
+        // 상품 삭제!!
+        var removeBtn = document.querySelector('#removeBtn');
         
-        
-		// 글 삭제!!
         removeBtn.addEventListener('click', function(){
             console.log('removeBtn clicked ㅇ_<');
+            
+            const checkedItems = document.querySelectorAll('input[name="item"]:checked');
 
+            // 체크된 상품의 번호를 배열로 저장
+            const checkedItemNos = Array.from(checkedItems).map((item) => item.parentElement.nextElementSibling.textContent);          
+            const checkedItemNoValues = Array.from(checkedItems).map((item) => item.parentElement.nextElementSibling.querySelector('input[name="no"]').value);
+            
+            // 체크된 체크박스가 없는 경우 경고 메시지 출력 후 종료
+            if (checkedItems.length === 0) {
+                alert("삭제할 상품을 선택해주세요.");
+                return;
+            }
+            
             //form 태그를 조작해서 삭제요청을 전송! 
             var form = document.querySelector('form');
             console.log(form.constructor.prototype);
-
-
-            form.setAttribute('method', 'POST');
-            form.setAttribute('action', '/admin/product/remove');
-            form.submit();
-
-        }); // removeBtn
-        
- </script>
- <script>      
-     
- 	// 페이지 이동 번호가 동작!
- 	
-        /*  let moveForm = ${"#moveForm"}; 
-        
-         $(".move").on("click", function(e) {
-        	e.preventDefault();
-        	
-        	moveForm.append("<input type='hidden' name='no' value='"+(this).attr("href")"'>");
-/*         	moveForm.attr("action", "/product/get");
-        	moveForm.submit(); */
-        	
-/*         	moveForm.setAttribute('method', 'POST');
-        	moveForm.setAttribute('action', '/product/get');
-        	moveForm.submit();      	
-        	
-        });  */
-        
-
-        /*$(".pageInfo a").on("click", function(e){
-        	 
-            e.preventDefault();
-            moveForm.find("input[name='currPage']").val($(this).attr("href"));
-            moveForm.attr("action", "/product/list");
-            moveForm.submit();
             
-        }); */
-        
-        
-
-</script>
+            if (checkedItems.length > 0) {
+                
+                if(confirm('선택한 상품을 삭제하시겠습니까?')) {
+                    
+                    // 선택한 상품의 번호를 hidden input 태그에 추가하여 form 요청 전송
+                    checkedItemNoValues.forEach((no) => {
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'no';
+                        hiddenInput.value = no;
+                        form.appendChild(hiddenInput);
+                    });
+                    
+                    form.setAttribute('method', 'POST');
+                    form.setAttribute('action', '/admin/product/remove');
+                    form.submit();
+                    
+                    alert("상품이 삭제되었습니다.");
+                    location.reload();  // 삭제 후 목록을 새로고침하여 삭제된 상품이 표시되지 않도록 함
+                }
+            } else {
+                alert("상품 삭제에 실패하였습니다.");
+            }
+        });
+ </script>
 
 </html>

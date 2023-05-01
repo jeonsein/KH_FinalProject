@@ -27,7 +27,7 @@ public class SearchController { // 메인페이지에 있는 검색창 -> produc
 	@Setter(onMethod_=@Autowired) // 서비스 주입
 	private SearchService service;
 	
-	@GetMapping("/search") // 1. 상품 리스트
+	@GetMapping("/mainsearch") // 1. 상품 리스트
 	public String searchproductList(Criteria cri, Model model) {
 		log.info("searchproductList({},{})invoked", cri, model);
 		
@@ -35,17 +35,17 @@ public class SearchController { // 메인페이지에 있는 검색창 -> produc
 		log.info("list:" + list);
 		
 		if(!list.isEmpty()) { // 검색한 상품리스트
-			model.addAttribute("list", list);
-			log.info("list: " + list);
+			model.addAttribute("mainsearchlist", list);
+			log.info("mainsearchlist: " + list);
 		} else {
 			model.addAttribute("emptylist", "empty");
-			return "search"; 
+			return "mainsearch"; 
 		} // if-else
 		
 		//페이징
 		model.addAttribute("__PAGE_MAKER__", new PageDTO(cri, service.totalProduct(cri)));
 		
-		return "search";
+		return "mainsearch";
 	} // searchproductList
 
 } // end class

@@ -188,9 +188,9 @@
         <div class="content">
             <h2>상품상세 <span class="test">테스트</span></h2>
             <div class="write">
-          
-            <div class="product">
-
+            	<form>
+            	<div class="product">
+          		<input type="hidden" name="no" value="${product.no}">
                        <div class="box1">
                            <div class="box2">
                                <p>카테고리</p>
@@ -222,6 +222,18 @@
                            </div>                      
                        </div>
                        <br>
+                       
+                       <div class="box1">
+                           <div class="box2">
+                               <p>타이틀-레시피('사과, 오렌지' 처럼 과일 명만 적기)</p>
+                           </div>
+                           <div class="box3">
+                               <input type="text"  name="title" id="info" value="${product.title}" readonly>
+                           </div>                      
+                       </div>
+                       <br>
+                       
+                       
    
                        <div class="box1">
                            <div class="box2">
@@ -295,7 +307,7 @@
                                <p>메인 이미지</p>
 		                    </div>
                            <div class="box3">
-	                        <div class="select_main_image"><img src="/resources/product/${product.main_image}" /></div>
+	                        <div class="select_main_image"><img src="/resources/product/${product.main_image}" id="main_image" /></div>
 	                                     
 	                           <script>
 	                              $("#main_image").change(function(){
@@ -312,31 +324,7 @@
 	                           </script>
                              </div>
 						</div>
-                     <br>
-                     
-                     <div class="box1">
-                             <div class="box2">
-                               <p>메인(썸네일) 이미지</p>
-                           </div>
-                           <div class="box3">
-	                        <div class="select_main_image2"><img src="/resources/product/${product.main_image2}" /></div>
-	                                     
-	                           <script>
-	                              $("#main_image2").change(function(){
-	                                 if(this.files && this.files[0]) {
-	                                                  
-	                                    var reader = new FileReader;
-	                                                     
-	                                    reader.onload = function(data) {
-	                                       $(".select_main_image2 img").attr("src", data.target.result).width(100);        
-	                                    }
-	                                    reader.readAsDataURL(this.files[0]);
-	                                 }
-	                              });
-	                           </script>
-                             </div>
-                  	</div>
-                     <br>
+                     	<br>
                      
    
                        <div class="box1">
@@ -344,22 +332,22 @@
                                <p>서브 이미지1</p>
                            </div>
                            <div class="box3">
-                        <div class="select_sub_image1"><img src="/resources/product/${product.sub_image1}" /></div>
+                        	<div class="select_sub_image1"><img src="/resources/product/${product.sub_image1}" id="sub_image1" /></div>
                                      
-                           <script>
-                              $("#sub_image1").change(function(){
-                                 if(this.files && this.files[0]) {
-                                                  
-                                    var reader = new FileReader;
-                                                     
-                                    reader.onload = function(data) {
-                                       $(".select_sub_image1 img").attr("src", data.target.result).width(100);       
-                                    }
-                                    reader.readAsDataURL(this.files[0]);
-                                 }
-                              });
-                           </script>
-                             </div>
+	                           <script>
+	                              $("#sub_image1").change(function(){
+	                                 if(this.files && this.files[0]) {
+	                                                  
+	                                    var reader = new FileReader;
+	                                                     
+	                                    reader.onload = function(data) {
+	                                       $(".select_sub_image1 img").attr("src", data.target.result).width(100);       
+	                                    }
+	                                    reader.readAsDataURL(this.files[0]);
+	                                 }
+	                              });
+	                           </script>
+                           </div>
                        </div>
                        <br>
                    
@@ -369,7 +357,7 @@
                                <p>서브 이미지2</p>
                            </div>
                            <div class="box3">
-                        <div class="select_sub_image2"><img src="/resources/product/${product.sub_image2}" /></div>
+                        <div class="select_sub_image2"><img src="/resources/product/${product.sub_image2}" id="sub_image2" /></div>
                                      
                            <script>
                               $("#sub_image2").change(function(){
@@ -393,7 +381,7 @@
                            <div class="box2">
                                <p>서브 이미지3</p>
                            <div class="box3">
-                        <div class="select_sub_image3"><img src="/resources/product/${product.sub_image3}" /></div>
+                        <div class="select_sub_image3"><img src="/resources/product/${product.sub_image3}" id="sub_image3" /></div>
                                      
                            <script>
                               $("#sub_image3").change(function(){
@@ -419,7 +407,7 @@
                                <p>서브 이미지4</p>
                            </div>
                            <div class="box3">
-                        <div class="select_sub_image4"><img src="/resources/product/${product.sub_image4}" /></div>
+                        <div class="select_sub_image4"><img src="/resources/product/${product.sub_image4}" id="sub_image4" /></div>
                                      
                            <script>
                               $("#sub_image4").change(function(){
@@ -454,7 +442,7 @@
                                <p>상세정보내용 이미지</p>
                            </div>
                            <div class="box3">
-                        <div class="select_content_image"><img src="/resources/product/${product.content_image}" /></div>
+                        <div class="select_content_image"><img src="/resources/product/${product.content_image}" id="content_image" /></div>
                                      
                            <script>
                               $("#content_image").change(function(){
@@ -510,20 +498,20 @@
 	
 	
 	// 삭제 버튼을 눌러 목록으로 돌아가기
-        removeBtn.addEventListener('click', function(){
-            console.log('removeBtn clicked ㅇ_<');
+    removeBtn.addEventListener('click', function(){
+        console.log('removeBtn clicked ㅇ_<');
 
-            //form 태그를 조작해서 삭제요청을 전송! 
-            var form = document.querySelector('form');
-            console.log(form.constructor.prototype);
-
-
-            form.setAttribute('method', 'POST');
-            form.setAttribute('action', '/admin/product/remove');
-            form.submit();
+        //form 태그를 조작해서 삭제요청을 전송! 
+        var form = document.querySelector('form');
+        console.log(form.constructor.prototype);
 
 
-    });
+        form.setAttribute('method', 'POST');
+        form.setAttribute('action', '/admin/product/remove');
+        form.submit();
+
+
+});
     
     
 </script>

@@ -87,9 +87,9 @@ public class AdminControllerTests {
 			requestBuilder.param("weight","2kg");
 			requestBuilder.param("origin", "국산");
 			requestBuilder.param("stock", "10");
+			requestBuilder.param("title", "토마토");
 			requestBuilder.param("Product_no", "1");
 			requestBuilder.param("main_image", "main_1");
-			requestBuilder.param("main_image2", "main_2");
 			requestBuilder.param("sub_image1", "sub_1");
 			requestBuilder.param("sub_image2", "sub_2");		
 			requestBuilder.param("sub_image3", "sub_3");
@@ -165,6 +165,35 @@ public class AdminControllerTests {
 	} // get
 	
 	
+//	@Disable
+	@Test
+	@Order(6)
+	@DisplayName("테스트 6 :remove")
+	@Timeout(value=60, unit=TimeUnit.SECONDS)
+	void testRemove() throws Exception{
+		log.trace("testRemove() invoked.");
+	
+		// MockMvc를 지어줄 "건설사Builder" 부터 획득
+		MockMvcBuilder mockMvcBuilder = MockMvcBuilders.webAppContextSetup(ctx); 
+		MockMvc mockMvc = mockMvcBuilder.build();
+		
+		//BoardController의 /board/list, GET 핸들러 테스트
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/admin/product/remove");
+		requestBuilder.param("no", "121"); // ... <- 가변인자
+		
+		// 컬렉션 아니어서 cleanup 안해도됨.
+		// 이제 가상의 MVC 환경에서, BoardController에 요청생성 및 전송
+		ModelAndView modelAndView = 
+				mockMvc.
+				 perform(requestBuilder).
+				 andReturn().
+				 getModelAndView();		
+		log.info("\t+ modelAndView : {}, type : {}", modelAndView.getViewName(), modelAndView.getClass().getName());
+
+	} // testRemove
+	
+	
+	
 	/* 상품 수정 */
 //	@Disable
 	@Test
@@ -220,8 +249,8 @@ public class AdminControllerTests {
 		requestBuilder.param("origin", "국산");
 		requestBuilder.param("stock", "10");
 		requestBuilder.param("Product_no", "1");
+		requestBuilder.param("title", "토마토");
 		requestBuilder.param("main_image", "main_1");
-		requestBuilder.param("main_image2", "main_2");
 		requestBuilder.param("sub_image1", "sub_1");
 		requestBuilder.param("sub_image2", "sub_2");		
 		requestBuilder.param("sub_image3", "sub_3");

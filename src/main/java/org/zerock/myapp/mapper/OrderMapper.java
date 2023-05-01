@@ -9,10 +9,10 @@ import org.zerock.myapp.domain.ProductDTO;
 public interface OrderMapper {
 	
 	// 상품정보를 얻기 위해 db에 요청
-	public OrderPageItemDTO getProductsInfo(Integer productId);
+	public OrderPageItemDTO getProductsInfo(Integer product_no);
 	
 	// 주문 상품 정보 담는 mapper(주문처리) // 주문상품DTO에서 가져옴
-	public OrderItemDTO getOrderInfo(Integer productId);
+	public OrderItemDTO getOrderInfo(Integer product_no);
 	
 	// MYMG_ORDER 테이블에 주문 등록 테이블
 	public Integer enrollOrder(OrderDTO ord);

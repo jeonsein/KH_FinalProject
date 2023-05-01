@@ -241,6 +241,16 @@
                            </div>                      
                        </div>
                        <br>
+                       
+                       <div class="box1">
+                           <div class="box2">
+                               <p>타이틀-레시피('사과, 오렌지' 처럼 과일 명만 적기)</p>
+                           </div>
+                           <div class="box3">
+                               <input type="text"  name="title" id="info">
+                           </div>                      
+                       </div>
+                       <br>
    
                        <div class="box1">
                            <div class="box2">
@@ -314,7 +324,7 @@
                            </div>
                            <div class="box3">
                        <input type="file" id="main_image" name="files" />
-                        <div class="select_main_image"><img src="" /></div>
+                       <div class="select_main_image"><img src="" /></div>
                                      
                            <script>
                               $("#main_image").change(function(){
@@ -330,34 +340,8 @@
                               });
                            </script>
                              </div>
-                  </div>
-                     <br>
-                     
-                     
-                     <div class="box1">
-                             <div class="box2">
-                               <p>메인(썸네일) 이미지</p>
-                           </div>
-                           <div class="box3">
-                       <input type="file" id="main_image2" name="files" />
-                        <div class="select_main_image2"><img src="" /></div>
-                                     
-                           <script>
-                              $("#main_image2").change(function(){
-                                 if(this.files && this.files[0]) {
-                                                  
-                                    var reader = new FileReader;
-                                                     
-                                    reader.onload = function(data) {
-                                       $(".select_main_image2 img").attr("src", data.target.result).width(200);        
-                                    }
-                                    reader.readAsDataURL(this.files[0]);
-                                 }
-                              });
-                           </script>
-                             </div>
-                  </div>
-                     <br>
+		               </div>
+		               <br>
                      
    
                        <div class="box1">

@@ -113,7 +113,8 @@
 <!-- 메인 - 공지사항 글 목록 테이블, 이동페이지, 수정, 삭제 -->            
                 
         <div class="content">
-            <table>
+        <form>
+            <table id="list">
                 <h2>공지사항 <span class="test">테스트</span></h2>
                 <!-- <a href="javascript:all_del()">전체선택 / 전체해제</a> -->
                 <thead>
@@ -168,11 +169,9 @@
 
 			        <input type="hidden" name="currPage" value="${pageMaker.cri.currPage }">
 			        <input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-		        
-            </form>
-           </div>
+		        </div>
+		        </form>
         </div>
-        
 
     </div>
 </main>
@@ -181,7 +180,6 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-
 <script>
 
 //  ================= 공지사항 목록 전체선택 / 전체해제 / 체크 삭제 ========================= 
@@ -218,9 +216,105 @@
         }
 
     }
+    
+//  ================== 3. 삭제 버튼 클릭 이벤트 처리 =============================
+
+    document.getElementById("removeBtn").addEventListener("click", function() {
+        const checkboxes = document.querySelectorAll('input[name="item"]:checked');
+        const noticeNos = [];
+
+        // 체크된 체크박스의 값을 배열에 추가
+        checkboxes.forEach((checkbox) => {
+            noticeNos.push(checkbox.parentNode.nextElementSibling.textContent);
+        });
+
+        // 컨트롤러에 전달할 파라미터 생성
+        const formData = new FormData();
+        formData.append("noticeNos", JSON.stringify(noticeNos));
+
+        // AJAX 요청 보내기
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/admin/notice/remove");
+        xhr.onload = function() {
+            if (xhr.status === 200 || xhr.status === 201) {
+                // 처리 결과에 따라 페이지 이동
+                const response = JSON.parse(xhr.response);
+                if (response.success) {
+                    alert("게시글이 삭제되었습니다.");
+                    location.reload();
+                } else {
+                    alert("게시글 삭제에 실패하였습니다.");
+                }
+            }
+        }
+        xhr.send(formData);
+    });    
 
 </script>
+<script>
+    // 삭제 버튼 클릭 시
+    document.getElementById('removeBtn').addEventListener('click', function() {
+        // 체크된 체크박스를 모두 가져옴
+        const checkboxes = document.querySelectorAll('input[name="item"]:checked');
 
+        // 체크된 체크박스의 값을 배열로 저장
+        const checkedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+
+        // 체크된 체크박스가 없을 경우
+        if (checkedValues.length === 0) {
+            alert('삭제할 게시글을 선택해주세요.');
+            return;
+        }
+
+        // 게시글 삭제 요청을 보낼 URL
+        const url = '/admin/product/remove';
+
+        // POST 방식으로 데이터 전송을 위한 폼 생성
+        const form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', url);
+
+        // 체크된 게시글 번호를 각각의 hidden input으로 추가
+        checkedValues.forEach(function(value) {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'no');
+            input.setAttribute('value', value);
+            form.appendChild(input);
+        });
+
+        // 전체 선택 체크박스의 상태를 저장
+        const selectAllCheckbox = document.querySelector('input[name="selectall"]');
+        const selectAllChecked = selectAllCheckbox.checked;
+
+        // criteria 값 추가
+        const criteria = {
+            page: 1,
+            perPageNum: 10,
+            type: '',
+            keyword: ''
+        };
+
+        for (const key in criteria) {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'criteria.' + key);
+            input.setAttribute('value', criteria[key]);
+            form.appendChild(input);
+        }
+
+        // 전체 선택 체크박스의 상태를 폼에 추가
+        const selectAllInput = document.createElement('input');
+        selectAllInput.setAttribute('type', 'hidden');
+        selectAllInput.setAttribute('name', 'selectAll');
+        selectAllInput.setAttribute('value', selectAllChecked);
+        form.appendChild(selectAllInput);
+
+        // 폼을 body에 추가하고 전송
+        document.body.appendChild(form);
+        form.submit();
+    });
+</script>
 <script>	
 //  ================== 5. 버튼을 클릭하면 이동함. =============================
 
@@ -240,54 +334,5 @@
         } // if
         
         
-        
-		// 글 삭제!!
-        removeBtn.addEventListener('click', function(){
-            console.log('removeBtn clicked ㅇ_<');
-
-            //form 태그를 조작해서 삭제요청을 전송! 
-            var form = document.querySelector('form');
-            console.log(form.constructor.prototype);
-
-
-            form.setAttribute('method', 'POST');
-            form.setAttribute('action', '/admin/notice/remove');
-            form.submit();
-
-        }); // removeBtn
-        
  </script>
- <script>      
-     
- 	// 페이지 이동 번호가 동작!
- 	
-        /*  let moveForm = ${"#moveForm"}; 
-        
-         $(".move").on("click", function(e) {
-        	e.preventDefault();
-        	
-        	moveForm.append("<input type='hidden' name='no' value='"+(this).attr("href")"'>");
-/*         	moveForm.attr("action", "/notice/get");
-        	moveForm.submit(); */
-        	
-/*         	moveForm.setAttribute('method', 'POST');
-        	moveForm.setAttribute('action', '/notice/get');
-        	moveForm.submit();      	
-        	
-        });  */
-        
-
-        /*$(".pageInfo a").on("click", function(e){
-        	 
-            e.preventDefault();
-            moveForm.find("input[name='currPage']").val($(this).attr("href"));
-            moveForm.attr("action", "/notice/list");
-            moveForm.submit();
-            
-        }); */
-        
-        
-
-</script>
-
 </html>

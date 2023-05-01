@@ -57,10 +57,10 @@ public class OrderMapperTests {
 	@DisplayName("테스트1: TestGetProductsInfo")
 	@Timeout(value = 1, unit=TimeUnit.MINUTES)
 	void TestGetProductsInfo() {
-	    Integer productId = 10; // 테스트용 상품 ID
-	    OrderPageItemDTO product = orderMapper.getProductsInfo(productId);
+	    Integer no = 10; // 테스트용 상품 ID
+	    OrderPageItemDTO product = orderMapper.getProductsInfo(no);
 	    assertNotNull(product);
-	    assertEquals(productId, product.getProductId());
+	    assertEquals(no, product.getNo());
 	    // 예를 들어, product.getName(), product.getPrice() 등을 확인하는 코드를 작성.
 
 	} // TestGetProductsInfo

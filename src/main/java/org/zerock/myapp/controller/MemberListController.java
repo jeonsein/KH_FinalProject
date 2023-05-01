@@ -22,7 +22,6 @@ import lombok.extern.log4j.Log4j2;
 @AllArgsConstructor
 
 @Component
-@SessionAttributes({"member", "memberDTO"})
 
 @Controller
 @RequestMapping("/admin/*")
