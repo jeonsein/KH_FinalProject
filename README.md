@@ -45,25 +45,14 @@
 |기간|설명|
 |:---|:---|
 |2023.01.04 ~ 2023.02.28|기획, 설계, 퍼블리싱|
-|2023.04.03~2023.05.08|백엔드 구현|
+|2023.04.03 ~ 2023.05.08|백엔드 구현|
 
 
 <br><br><br>
 
 
 
-## 🔨 사용하는 툴
-
-<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/SpringFramework-6DB33F?style=flat&logo=Spring&logoColor=white" style="height: auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/OracleSQL-F80000?style=flat&logo=Oracle&logoColor=white" style="height: auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/ApacheTomcat9-F8DC75?style=flat&logo=Apache Tomcat&logoColor=white" style="height: auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<br><br>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
-<img src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=Postman&logoColor=white"  style="height : auto; margin-left : 10px; margin-right : 10px;"/>&nbsp;
+## 🔨 개발 환경
 
 1. Operating System<br>
 (1) Microsoft Windows 10<br>
