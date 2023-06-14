@@ -54,8 +54,8 @@
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
 		<property name="host" value="smtp.naver.com"/> <!-- 메일 서버 호스트 -->
 		<property name="port" value="465"/> <!-- 메일 서버의 포트 번호 -->
-		<property name="username" value="dhcksehf1@naver.com"/>
-		<property name="password" value="cksehf8331!"/>
+		<property name="username" value="이메일입력"/>
+		<property name="password" value="비밀번호입력"/>
 		<!-- 보안연결 SSL과 관련된 설정 -->
 		<property name="javaMailProperties">
 			<props>
